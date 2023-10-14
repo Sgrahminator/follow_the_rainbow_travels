@@ -105,4 +105,13 @@ pride-worldwide/
                   - type.model.js
                   - user.model.js
             - routes/
+                  - about.route.js
+                  - allycorner.route.js
+                  - auth.route.js
+                  - category.route.js
+                  - home.route.js
+                  - review.route.js
+                  - safetytip.route.js
+                  - submission.route.js
+                  - user.route.js
             - server.js

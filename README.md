@@ -83,86 +83,26 @@ Admin Page ("/admin"): Moderation is crucial for ensuring the quality, safety, a
 
 
 
- pride-worldwide/
-│
-├── client/
-│    ├── public/
-│    │    └── vite.svg
-│    ├── src/
-│    │    ├── assets/             # Images, fonts and other static files
-│    │    ├── components/
-│    │    ├── Navigation/
-│    │    │   └── Navigation.jsx
-│    │    ├── Header/
-│    │    │   └── Header.jsx
-│    │    ├── Footer/
-│    │    │    │   │   └── Footer.jsx
-│    │    │    │   ├── RatingStars/
-│    │    │    │   │   └── RatingStars.jsx
-│    │    │    │   ├── UserSubmissionForm/
-│    │    │    │   │   └── UserSubmissionForm.jsx
-│    │    │    │   └── ReviewCard/
-│    │    │    │       └── ReviewCard.jsx
-│    │    │    │
-│    │    │    ├── pages/
-│    │    │    │   ├── Home/
-│    │    │    │   │   └── Home.jsx
-│    │    │    │   ├── LoginRegister/
-│    │    │    │   │   ├── Login.jsx
-│    │    │    │   │   ├── Register.jsx
-│    │    │    │   │   └── LoginRegister.jsx
-│    │    │    │   ├── About/
-│    │    │    │   │   └── About.jsx
-│    │    │    │   ├── Categories/
-│    │    │    │   │   └── Categories.jsx
-│    │    │    │   │   └── components/
-│    │    │    │   │       ├──
-│    │    │    │   ├── SafetyTips/
-│    │    │    │   │   └── SafetyTips.jsx
-│    │    │    │   ├── AllyCorner/
-│    │    │    │   │   └── AllyCorner.jsx
-│    │    │    │   └── Profile/
-│    │    │    │       ├── ViewProfile.jsx
-│    │    │    │       ├── EditProfile.jsx
-│    │    │    │       └── Profile.jsx
-│    │    │    │
-│    │    │    ├── routes/             # Route definitions and guards
-│    │    │    │   └── index.jsx
-│    │    │    │
-│    │    │    ├── services/           # Services for http requests
-│    │    │    │   ├── authService.jsx
-│    │    │    │   ├── userService.jsx
-│    │    │    │   ├── reviewService.jsx
-│    │    │    │   └── categoryService.jsx
-│    │    │    │     
-│    │    │    ├── styles/             
-│    │    │    │   ├── components/   # Styles related to specific components
-│    │    │    │   │   ├── Navigation.css
-│    │    │    │   │   ├── Footer.css
-│    │    │    │   │   ├── RatingStars.css
-│    │    │    │   │   ├── UserSubmissionForm.css
-│    │    │    │   │   └── ReviewCard.css
-│    │    │    │   │
-│    │    │    │   └── pages/        # Styles specific to different pages
-│    │    │    │       ├── Home.css
-│    │    │    │       ├── LoginRegister.css
-│    │    │    │       ├── About.css
-│    │    │    │       ├── Categories.css
-│    │    │    │       ├── SafetyTips.css
-│    │    │    │       ├── AllyCorner.css
-│    │    │    │       └── Profile.css
-│    │    │    │
-│    │    │    ├── utils/              
-│    │    │    │
-│    │    │    ├── App.css
-│    │    │    ├── App.jsx 
-│    │    │    ├── index.css             
-│    │    │    └── main.jsx 
-│    │    │
-│    │    ├── .eslintrc.cjs
-│    │    ├── .gitignore
-│    │    ├── index.html
-│    │    ├── package-lock.json
-│    │    ├── package.json
-│    │    ├── README.md
-│    │    └── vite.config.js
+pride-worldwide/
+      - client/
+      - server/
+            - config/
+                  - mongoose.config.js
+            - controllers/
+            - models/
+                  - allypost.model.js
+                  - allyquestion.model.js
+                  - category.model.js
+                  - cruiseline.model.js
+                  - event.model.js
+                  - location.model.js
+                  - review.model.js
+                  - safetytip.model.js
+                  - shop.model.js
+                  - specialoffer.model.js
+                  - subcategory.model.js
+                  - submission.model.js
+                  - type.model.js
+                  - user.model.js
+            - routes/
+            - server.js

@@ -4,11 +4,21 @@ Project Name: "Pride Worldwide"
 
 Concept: A worldwide, user-driven recommendation website where LGBTQIA+ individuals and allies can share and discover LGBTQIA+ friendly and accepting places and/or events across various categories.
 
+
+Login/Register Page ("/"): User-centric gateway for both returning and new members of the Pride Worldwide community. 
+ - Features straightforward login and registration forms with clearly outlined benefits for joining the community. 
+ - Emphasizes the platform's commitment to safety, privacy, and respectful interactions. 
+ - Login being the usual Email and Password (hashed) form. 
+ - Registration will have Name (First and Last), Username (a user created name for themselves), Pronouns (a drop down of options - He/Him, She/Her, They/Them), Membership Type (radio button choice of LGTBQIA+ or Ally), Email, Password (hashed), and Confirm Password (confirm). 
+ - Once logged in the user will direct/route to the Home Page ("/home").
+ - Typically the home page would be the main route ("/"), in this case the login/registration page is the main route ("/") - users can not see anything within the website unless they're registered and logged in.
+
+
 *All pages except the login/registration page will have this at the top of their pages*
 Top of page: 
 "Discover and Share LGBTQIA+ Friendly Spots with Confidence — Your Safe Harbor in an Open World"
 
-Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Corner, and Profile circle/spot.
+Top of page Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Corner, and Profile circle/spot.
 - Each button/tab will route/direct to it's respective page.
 - The profile circle/spot will display the users chosen profile image and when clicked on it will have 3 options. 
 1. A link to the users profile page
@@ -20,15 +30,7 @@ Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Cor
           - This circle when clicked on will drop down 3 options, Profile Page, Support/Contact Us, and Logout. 
           - Profile page will direct to the user in session's profile page, Support/Contact Us will direct to a Contact Us Page, and Logout will logout the user in session directing the user to the login registration page.
 
-Login/Register Page ("/"): User-centric gateway for both returning and new members of the Pride Worldwide community. 
- - Features straightforward login and registration forms with clearly outlined benefits for joining the community. 
- - Emphasizes the platform's commitment to safety, privacy, and respectful interactions. 
- - Login being the usual Email and Password (hashed) form. 
- - Registration will have Name (First and Last), Username (a user created name for themselves), Pronouns (a drop down of options - He/Him, She/Her, They/Them), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password (confirm). 
- - Once logged in the user will direct/route to the Home Page ("/home").
- - Typically the home page would be the main route ("/"), in this case the login/registration page is the main route ("/") - users can not see anything within the website unless they're registered and logged in.
-
-Home Page ("/home"): The main page users/members see. 
+Home Page ("/home"): The main page users/members see once they login - also one of the tab views from the quick-access tabs. 
  - It will have 3 sections that highlight 3 different things
  - 1. top reviewed submissions 2. top reviewers 3. newest additions. 
  - Each section will have a "See All" option that will direct to page with a full display of all submissions in that category. 
@@ -55,13 +57,13 @@ Categories Page ("/categories"): A page to view LGBTQIA+ friendly countries, cit
 		   - If a "See All" is clicked from a specific place/event/area/etc it will take the user to a "SeeAll" page for all reviews submitted for that specific place/event/area/etc with filters specifying or narrowing it down to that specific place/event/area/etc with the option to broaden the filters.
 	- Filter: Users can filter by highest ratings, recent additions, specific category, a specific place/event/area/etc, or city/area/country. 
 
-Safety Tips ("/safety"): A page where users can learn and share safety tips. 
+Safety Tips ("/safetytips"): A page where users can learn and share safety tips. 
  - A page of safety tips. 
  - A few given by us/Pride Worldwide and the rest given as input/tips from the users. 
  - The user submitted safety tips can have some highlighted and a link to See All with a filter option to make the search easier. 
  - A place for users to submit their own safety tips. 
 
-Ally's Corner ("/allies"): A dedicated section where allies can show support, ask questions, and learn about the LGBTQIA+ community.
+Ally's Corner ("/allycorner"): A dedicated section where allies can show support, ask questions, and learn about the LGBTQIA+ community.
  - A section for Q&A where Ally's or Users can ask questions and other members can respond. 
  - It will need a See All that directs to a page of all Q&A's. 
  - A section for support posts (text or image or a combo of both), a positive posts section. 
@@ -83,35 +85,40 @@ Admin Page ("/admin"): Moderation is crucial for ensuring the quality, safety, a
 
 
 
-pride-worldwide/
-      - client/
-      - server/
-            - config/
-                  - mongoose.config.js
-            - controllers/
-            - models/
-                  - allypost.model.js
-                  - allyquestion.model.js
-                  - category.model.js
-                  - cruiseline.model.js
-                  - event.model.js
-                  - location.model.js
-                  - review.model.js
-                  - safetytip.model.js
-                  - shop.model.js
-                  - specialoffer.model.js
-                  - subcategory.model.js
-                  - submission.model.js
-                  - type.model.js
-                  - user.model.js
-            - routes/
-                  - about.route.js
-                  - allycorner.route.js
-                  - auth.route.js
-                  - category.route.js
-                  - home.route.js
-                  - review.route.js
-                  - safetytip.route.js
-                  - submission.route.js
-                  - user.route.js
-            - server.js
+- newPrideWorldWide/
+	- server/
+		- config/
+			- mongoose.config.js *code written and working for login and registration*
+			- passport.config.js *code written and working for login and registration*
+		- controllers/
+			- auth.controller.js *code written and working for login and registration*
+			- user.controller.js *code written and working for login and registration*
+		- middleware/
+			- authMiddleware.js *code written and working for login and registration*
+
+		- models/
+			- allypost.model.js
+			- allyquestion.model.js
+			- category.model.js
+			- cruiseline.model.js
+			- event.model.js
+			- location.model.js
+			- review.model.js
+			- safetytip.model.js
+			- shop.model.js
+			- specialoffer.model.js
+			- subcategory.model.js
+			- submission.model.js
+			- type.model.js
+			- user.model.js *code written and working for login and registration*
+		- routes/
+			- about.route.js
+			- allycorner.route.js
+			- auth.route.js *code written and working for login and registration*
+			- category.route.js
+			- home.route.js
+			- review.route.js
+			- safetytip.route.js
+			- submission.route.js
+			- user.route.js *code written and working for login and registration*
+		- server.js *code written and working for login and registration*

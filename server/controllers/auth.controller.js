@@ -1,20 +1,19 @@
 const User = require('../models/user.model');
-const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 exports.registerUser = async (req, res) => {
     try {
-        const { name, username, pronouns, membershipType, email, password } = req.body;
+        const { name, username, pronouns, membershipType, email, password, confirmPassword } = req.body;
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
+        // Creating a new user instance with the provided details
         const newUser = new User({
             name,
             username,
             pronouns,
             membershipType,
             email,
-            password: hashedPassword,
+            password, // Password hashing is handled in the user model middleware
+            confirmPassword,
         });
 
         await newUser.save();
@@ -45,3 +44,4 @@ exports.logoutUser = (req, res) => {
 exports.getAuthenticatedUser = (req, res) => {
     res.status(200).json({ user: req.user });
 };
+

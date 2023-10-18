@@ -5,6 +5,7 @@ const locationSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        trim: true, // Removes any whitespace
     },
     type: {
         type: String,
@@ -13,4 +14,8 @@ const locationSchema = new mongoose.Schema({
     },
 });
 
+// Adding an index on the name field for improved query performance
+locationSchema.index({ name: 1, type: 1 }); 
+
 module.exports = mongoose.model('Location', locationSchema);
+

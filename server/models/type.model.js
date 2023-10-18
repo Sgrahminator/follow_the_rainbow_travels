@@ -6,6 +6,10 @@ const typeSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    categoryOf: { // Describing the type of category this type belongs to.
+        type: String,
+        enum: ['Accommodations', 'Cruises', 'Events', 'Bars/Nightlife', 'Restaurant','Shopping', 'Vacations/Adventures'], // Enum to limit the types of categories
+    },
     categories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
@@ -19,4 +23,5 @@ const typeSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Type', typeSchema);
+
 

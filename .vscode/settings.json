@@ -8,10 +8,12 @@
         "cruiseline",
         "LGBTQIA",
         "LGTBQIA",
+        "maxlength",
         "MERN",
         "resave",
         "safetytip",
         "safetytips",
-        "specialoffer"
+        "specialoffer",
+        "whitespaces"
     ]
 }

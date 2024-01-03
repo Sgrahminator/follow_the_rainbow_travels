@@ -13,11 +13,8 @@ const categorySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Location', 
     }],
-    subcategories: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subcategory', 
-    }],
-}, {
+},
+{
     timestamps: true, 
 });
 

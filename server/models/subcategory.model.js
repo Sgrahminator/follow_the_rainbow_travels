@@ -9,11 +9,11 @@ const subcategorySchema = new mongoose.Schema({
         minlength: 2, // Ensures that the name has a meaningful length
         maxlength: 100, // Limits the length of the name to maintain consistency
     },
-    locations: [{
+    category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Location', 
-        required: true, // Ensuring each subcategory is associated with at least one location
-    }],
+        ref: 'Category',
+        required: true
+    },
 }, {
     timestamps: true,
 });

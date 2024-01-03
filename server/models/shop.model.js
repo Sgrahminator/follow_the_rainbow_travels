@@ -6,7 +6,7 @@ const shopSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true, // Removing extra whitespaces
-        minlength: 2, // Ensuring the shop name has a meaningful length
+        minlength: 3, // Ensuring the shop name has a meaningful length
         maxlength: 255, // Limiting the shop name length for consistent data
     },
     location: {

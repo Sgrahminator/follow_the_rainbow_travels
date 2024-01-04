@@ -4,12 +4,12 @@ const reviewSchema = new mongoose.Schema({
     submission: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Submission',
-        required: true, // Make it required to always link a review to a submission
+        required: true, // Making it required to always link a review to a submission
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true, // Make it required to always link a review to a user
+        required: true, // Making it required to always link a review to a user
     },
     comment: {
         type: String,
@@ -18,7 +18,7 @@ const reviewSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true, // Make rating required
+        required: true, // Making rating required
         min: 1,
         max: 7,
     },

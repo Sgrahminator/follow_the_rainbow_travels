@@ -8,7 +8,7 @@ const { requireAuth } = require('../middleware/authMiddleware');
 // Apply authentication middleware to relevant routes
 router.use(requireAuth);
 
-// Get a list of safety tips
+// Get a list of all safety tips
 router.get('/safetytips', SafetyTipController.getAllSafetyTips);
 
 // Create a new safety tip

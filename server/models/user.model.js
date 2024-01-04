@@ -12,12 +12,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: 2,
+        minlength: 3,
         trim: true,
     },
     pronouns: {
         type: String,
-        enum: ['He/Him', 'She/Her', 'They/Them'],
+        enum: ['He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'],
         required: true,
     },
     membershipType: {

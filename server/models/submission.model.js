@@ -11,10 +11,6 @@ const submissionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
     }],
-    subcategories: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subcategory',
-    }],
     address: {
         type: String,
         trim: true,
@@ -34,6 +30,16 @@ const submissionSchema = new mongoose.Schema({
             message: props => `${props.value} is not a valid URL!`
         },
     }],
+    isLGBTQIAOwned: {
+        type: Boolean,
+        required: true, // Making this field required to ensure clarity
+        default: false, // Default to false if not provided
+    },
+    isLGBTQIAFriendly: {
+        type: Boolean,
+        required: true, // Making this field required to ensure clarity
+        default: false, // Default to false if not provided
+    },
     ratings: [{
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -45,12 +51,18 @@ const submissionSchema = new mongoose.Schema({
             max: 7,
         },
     }],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true, // Making user reference required to ensure every tip is associated with a user
+    },
 }, {
     timestamps: true,
 });
 
 // Indexing name for better search performance
 submissionSchema.index({ name: 1 });
+submissionSchema.index({ isLGBTQIAOwned: 1, isLGBTQIAFriendly: 1 });
 
 module.exports = mongoose.model('Submission', submissionSchema);
 

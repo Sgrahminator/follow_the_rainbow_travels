@@ -17,10 +17,10 @@ router.get('/submission/:id', SubmissionController.getSubmissionById);
 // Get a list of submissions (filtered by category, location, etc.)
 router.get('/submissions', SubmissionController.getSubmissions);
 
-// Update a submission (if allowed by the user)
+// Update a submission (if they're the authorized user)
 router.put('/submission/:id', SubmissionController.updateSubmission);
 
-// Delete a submission (if allowed by the user)
+// Delete a submission (if they're the authorized user)
 router.delete('/submission/:id', SubmissionController.deleteSubmission);
 
 module.exports = router;

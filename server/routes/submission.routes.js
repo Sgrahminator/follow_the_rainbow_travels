@@ -17,6 +17,9 @@ router.get('/submission/:id', SubmissionController.getSubmissionById);
 // Get a list of submissions (filtered by category, location, etc.)
 router.get('/submissions', SubmissionController.getSubmissions);
 
+// Get all submissions by a specific user
+router.get('/user-submissions/:userId', SubmissionController.getSubmissionByUser);
+
 // Update a submission (if they're the authorized user)
 router.put('/submission/:id', SubmissionController.updateSubmission);
 

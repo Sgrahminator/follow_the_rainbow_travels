@@ -8,7 +8,5 @@ router.get('/categories', CategoryController.getAllCategories);
 // Get details of a specific category
 router.get('/category/:id', CategoryController.getCategoryById);
 
-// Get subcategories of a specific category
-router.get('/category/:id/subcategories', CategoryController.getSubcategories);
 
 module.exports = router;

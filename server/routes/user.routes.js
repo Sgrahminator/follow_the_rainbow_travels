@@ -18,6 +18,6 @@ router.put('/profile', UserController.updateUserProfile);
 router.delete('/profile', UserController.deleteUserProfile);
 
 // Get another user's profile (public view)
-router.get('/:id', UserController.getOtherUserProfile);
+router.get('/profile/:id', UserController.getOtherUserProfile);
 
 module.exports = router;

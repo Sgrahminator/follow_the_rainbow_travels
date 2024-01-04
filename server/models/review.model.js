@@ -16,6 +16,15 @@ const reviewSchema = new mongoose.Schema({
         maxlength: 1000, // Set a maximum length for the comment
         trim: true, // Trim whitespaces
     },
+    photos: [{
+        type: String,
+        validate: {
+            validator: function(v) {
+                return /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/.test(v);
+            },
+            message: props => `${props.value} is not a valid URL!`
+        },
+    }],
     rating: {
         type: Number,
         required: true, // Making rating required

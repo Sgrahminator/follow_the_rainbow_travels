@@ -54,14 +54,14 @@ const submissionSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true, // Making user reference required to ensure every tip is associated with a user
+        required: true, // Making user reference required to ensure every submission is associated with a user
     },
 }, {
     timestamps: true,
 });
 
-// Indexing name for better search performance
-submissionSchema.index({ name: 1 });
+// Indexing for better search performance
+submissionSchema.index({ name: 1, categories: 1 });
 submissionSchema.index({ isLGBTQIAOwned: 1, isLGBTQIAFriendly: 1 });
 
 module.exports = mongoose.model('Submission', submissionSchema);

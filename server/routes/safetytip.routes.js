@@ -17,5 +17,9 @@ router.post('/safetytips', SafetyTipController.createSafetyTip);
 // Get details of a specific safety tip
 router.get('/safetytip/:id', SafetyTipController.getSafetyTipById);
 
+// Get all safety tips by a specific user
+router.get('/user-safetytips/:userId', SAfetyTipController.getSafetyTipByUser);
+
+
 module.exports = router;
 

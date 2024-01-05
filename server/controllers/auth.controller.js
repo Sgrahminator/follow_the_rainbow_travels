@@ -5,7 +5,13 @@ exports.registerUser = async (req, res) => {
     try {
         const { name, username, pronouns, membershipType, email, password, confirmPassword } = req.body;
 
-        // Creating a new user instance with the provided details
+        // Check for existing user with the same email or username
+        const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email or username already exists' });
+        }
+
+        // Creating a new user instance 
         const newUser = new User({
             name,
             username,
@@ -44,4 +50,5 @@ exports.logoutUser = (req, res) => {
 exports.getAuthenticatedUser = (req, res) => {
     res.status(200).json({ user: req.user });
 };
+
 

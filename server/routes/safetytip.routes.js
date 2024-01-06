@@ -18,8 +18,13 @@ router.post('/safetytips', SafetyTipController.createSafetyTip);
 router.get('/safetytip/:id', SafetyTipController.getSafetyTipById);
 
 // Get all safety tips by a specific user
-router.get('/user-safetytips/:userId', SAfetyTipController.getSafetyTipByUser);
+router.get('/user-safetytips/:userId', SafetyTipController.getSafetyTipByUser);
 
+// Update a submission (if they're the authorized user)
+router.put('/safetytip/:id', SafetyTipController.updateSafetyTip);
+
+// Delete a submission (if they're the authorized user)
+router.delete('/safetytip/:id', SafetyTipController.deleteSafetyTip);
 
 module.exports = router;
 

@@ -1,6 +1,9 @@
 const User = require('../models/user.model');
 const Submission = require('../models/submission.model');
 const Review = require('../models/review.model');
+const SafetyTip = require('../models/safetytip.model');
+const AllyPost = require('../models/allypost.model');
+const AllyQuestion = require('../models/allyquestion.model');
 
 exports.getUserProfile = async (req, res) => {
     try {
@@ -8,11 +11,17 @@ exports.getUserProfile = async (req, res) => {
         const user = await User.findById(userId);
         const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
         const userReviews = await Review.find({ user: userId });
+        const userSafetyTips = await SafetyTip.find({ user: userId });
+        const userAllyPosts = await AllyPost.find({ user: userId });
+        const userAllyQuestions = await AllyQuestion.find({ user: userId });
 
         res.status(200).json({ 
             userProfile: user, 
             submissions: userSubmissions, 
-            reviews: userReviews 
+            reviews: userReviews,
+            safetyTips: userSafetyTips,
+            allyPosts: userAllyPosts,
+            allyQuestions: userAllyQuestions 
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -25,11 +34,17 @@ exports.getOtherUserProfile = async (req, res) => {
         const user = await User.findById(userId, 'username');
         const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
         const userReviews = await Review.find({ user: userId });
+        const userSafetyTips = await SafetyTip.find({ user: userId });
+        const userAllyPosts = await AllyPost.find({ user: userId });
+        const userAllyQuestions = await AllyQuestion.find({ user: userId }); 
 
         res.status(200).json({ 
             userProfile: user, 
             submissions: userSubmissions, 
-            reviews: userReviews 
+            reviews: userReviews,
+            safetyTips: userSafetyTips, 
+            allyPosts: userAllyPosts,
+            allyQuestions: userAllyQuestions
         });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -53,3 +68,6 @@ exports.deleteUserProfile = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+module.exports = UserController;

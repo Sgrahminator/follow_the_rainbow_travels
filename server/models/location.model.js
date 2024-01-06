@@ -9,7 +9,7 @@ const locationSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['Country', 'City', 'Region'],
+        enum: ['Country', 'City', 'Region', 'State', 'Province', 'Territory'],
         required: true,
     },
 });

@@ -50,7 +50,7 @@ const SubmissionController = {
 
             // Sorting logic
             switch (req.query.sort) {
-                case 'highestRatings':
+                case 'highestReviewRatings':
                     aggregatePipeline.push({ $sort: { averageRating: -1 } });
                     break;
                 case 'recentAdditions':
@@ -61,7 +61,7 @@ const SubmissionController = {
                     break;
             }
 
-            if (req.query.sort !== 'highestRatings') {
+            if (req.query.sort !== 'highestReviewRatings') {
                 aggregatePipeline.push({ $sort: sort });
             }
 

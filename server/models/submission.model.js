@@ -49,6 +49,12 @@ const submissionSchema = new mongoose.Schema({
         ref: 'Location',
         required: true,
     },
+    rating: {
+        type: Number,
+        required: true, // Making rating required
+        min: 1,
+        max: 7,
+    },
 }, {
     timestamps: true,
 });

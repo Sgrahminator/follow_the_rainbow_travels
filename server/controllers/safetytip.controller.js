@@ -1,5 +1,4 @@
 const SafetyTip = require('../models/safetytip.model');
-const User = require('../models/user.model');
 
 const SafetyTipController = {
     // Create a new safety tip

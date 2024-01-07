@@ -1,5 +1,6 @@
 const Submission = require('../models/submission.model');
 const Review = require('../models/review.model');
+const Location = require('../models/location.model'); 
 
 const SubmissionController = {
     createSubmission: async (req, res) => {
@@ -15,8 +16,8 @@ const SubmissionController = {
     getSubmissionById: async (req, res) => {
         try {
             const submission = await Submission.findById(req.params.id)
-                                            .populate('user', 'name')
-                                            .populate('categories');
+                .populate('user', 'name')
+                .populate('categories');
             if (!submission) {
                 return res.status(404).json({ message: 'Submission not found' });
             }
@@ -66,9 +67,9 @@ const SubmissionController = {
             }
 
             const submissions = await Submission.aggregate(aggregatePipeline)
-                                                .populate('user', 'name')
-                                                .populate('categories')
-                                                .populate('location');
+                .populate('user', 'name')
+                .populate('categories')
+                .populate('location');
 
             res.status(200).json(submissions);
         } catch (error) {
@@ -104,8 +105,9 @@ const SubmissionController = {
         } catch (error) {
             res.status(500).json({ message: error.message });
         }
-    },
+    }
 };
 
 module.exports = SubmissionController;
+
 

@@ -5,26 +5,21 @@ const SubmissionController = require('../controllers/submission.controller');
 // Require authentication for all routes in this file
 const { requireAuth } = require('../middleware/authMiddleware');
 
-// Apply authentication middleware to relevant routes
-router.use(requireAuth);
-
 // Create a new submission
-router.post('/submission', SubmissionController.createSubmission);
+router.post('/submission', requireAuth, SubmissionController.createSubmission);
 
 // Get details of a specific submission
-router.get('/submission/:id', SubmissionController.getSubmissionById);
+router.get('/submission/:id', requireAuth, SubmissionController.getSubmissionById);
 
 // Get a list of submissions (filtered by category, location, etc.)
-router.get('/submissions', SubmissionController.getSubmissions);
-
-// Get all submissions by a specific user
-router.get('/user-submissions/:userId', SubmissionController.getSubmissionByUser);
+router.get('/submissions', requireAuth, SubmissionController.getSubmissions);
 
 // Update a submission (if they're the authorized user)
-router.put('/submission/:id', SubmissionController.updateSubmission);
+router.put('/submission/:id', requireAuth, SubmissionController.updateSubmission);
 
 // Delete a submission (if they're the authorized user)
-router.delete('/submission/:id', SubmissionController.deleteSubmission);
+router.delete('/submission/:id', requireAuth, SubmissionController.deleteSubmission);
 
 module.exports = router;
+
 

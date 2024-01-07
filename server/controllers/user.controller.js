@@ -5,69 +5,70 @@ const SafetyTip = require('../models/safetytip.model');
 const AllyPost = require('../models/allypost.model');
 const AllyQuestion = require('../models/allyquestion.model');
 
-exports.getUserProfile = async (req, res) => {
-    try {
-        const userId = req.user._id;
-        const user = await User.findById(userId);
-        const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
-        const userReviews = await Review.find({ user: userId });
-        const userSafetyTips = await SafetyTip.find({ user: userId });
-        const userAllyPosts = await AllyPost.find({ user: userId });
-        const userAllyQuestions = await AllyQuestion.find({ user: userId });
+const UserController = {
+    getUserProfile: async (req, res) => {
+        try {
+            const userId = req.user._id;
+            const user = await User.findById(userId);
+            const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
+            const userReviews = await Review.find({ user: userId });
+            const userSafetyTips = await SafetyTip.find({ user: userId });
+            const userAllyPosts = await AllyPost.find({ user: userId });
+            const userAllyQuestions = await AllyQuestion.find({ user: userId });
 
-        res.status(200).json({ 
-            userProfile: user, 
-            submissions: userSubmissions, 
-            reviews: userReviews,
-            safetyTips: userSafetyTips,
-            allyPosts: userAllyPosts,
-            allyQuestions: userAllyQuestions 
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+            res.status(200).json({ 
+                userProfile: user, 
+                submissions: userSubmissions, 
+                reviews: userReviews,
+                safetyTips: userSafetyTips,
+                allyPosts: userAllyPosts,
+                allyQuestions: userAllyQuestions 
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    getOtherUserProfile: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const user = await User.findById(userId, 'username');
+            const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
+            const userReviews = await Review.find({ user: userId });
+            const userSafetyTips = await SafetyTip.find({ user: userId });
+            const userAllyPosts = await AllyPost.find({ user: userId });
+            const userAllyQuestions = await AllyQuestion.find({ user: userId }); 
+
+            res.status(200).json({ 
+                userProfile: user, 
+                submissions: userSubmissions, 
+                reviews: userReviews,
+                safetyTips: userSafetyTips, 
+                allyPosts: userAllyPosts,
+                allyQuestions: userAllyQuestions
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    updateUserProfile: async (req, res) => {
+        try {
+            const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
+            res.status(200).json({ message: 'User profile updated', updatedUser });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    deleteUserProfile: async (req, res) => {
+        try {
+            await User.findByIdAndDelete(req.user._id);
+            res.status(200).json({ message: 'User profile deleted' });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     }
 };
-
-exports.getOtherUserProfile = async (req, res) => {
-    try {
-        const userId = req.params.id;
-        const user = await User.findById(userId, 'username');
-        const userSubmissions = await Submission.find({ user: userId }).populate('reviews');
-        const userReviews = await Review.find({ user: userId });
-        const userSafetyTips = await SafetyTip.find({ user: userId });
-        const userAllyPosts = await AllyPost.find({ user: userId });
-        const userAllyQuestions = await AllyQuestion.find({ user: userId }); 
-
-        res.status(200).json({ 
-            userProfile: user, 
-            submissions: userSubmissions, 
-            reviews: userReviews,
-            safetyTips: userSafetyTips, 
-            allyPosts: userAllyPosts,
-            allyQuestions: userAllyQuestions
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
-exports.updateUserProfile = async (req, res) => {
-    try {
-        const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
-        res.status(200).json({ message: 'User profile updated', updatedUser });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
-exports.deleteUserProfile = async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.user._id);
-        res.status(200).json({ message: 'User profile deleted' });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
 
 module.exports = UserController;

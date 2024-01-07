@@ -1,29 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const AllyQuestionController = require('../controllers/allyquestion.controller');
-
-// Require authentication for all routes in this file
+const AllyQuestionController = require('../controllers/allyquestion.controller'); 
 const { requireAuth } = require('../middleware/authMiddleware');
 
-// Apply authentication middleware to relevant routes
-router.use(requireAuth);
-
 // Create a new question
-router.post('/allyquestion', AllyQuestionController.createAllyQuestion);
+router.post('/allyquestion', requireAuth, AllyQuestionController.createAllyQuestion);
 
 // Get a specific question with its answers
-router.get('/allyquestion/:id', AllyQuestionController.getAllyQuestionById);
+router.get('/allyquestion/:id', requireAuth, AllyQuestionController.getAllyQuestionById);
 
 // Get all questions with their answers
-router.get('/allyquestions', AllyQuestionController.getAllAllyQuestions);
+router.get('/allyquestions', requireAuth, AllyQuestionController.getAllAllyQuestions);
 
 // Update a question or answer (if the authorized user)
-router.put('/allyquestion/:id', AllyQuestionController.updateAllyQuestion);
+router.put('/allyquestion/:id', requireAuth, AllyQuestionController.updateAllyQuestion);
 
 // Delete a question or answer (if the authorized user)
-router.delete('/allyquestion/:id', AllyQuestionController.deleteAllyQuestion);
+router.delete('/allyquestion/:id', requireAuth, AllyQuestionController.deleteAllyQuestion);
 
 // Get all questions/answers from a specific user
-router.get('/user-allyquestions/:userId', AllyQuestionController.getAllyQuestionsByUser);
+router.get('/user-allyquestions/:userId', requireAuth, AllyQuestionController.getAllyQuestionsByUser);
 
 module.exports = router;
+
+

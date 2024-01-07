@@ -17,13 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session configuration
 app.use(session({
-    secret: 'your_secret_key', // consider using environment variables for enhanced security
+    secret: 'your_secret_key', 
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24, // expires in 24 hours
         httpOnly: true,
-        secure: false, // set to true if your application uses HTTPS
+        secure: false, 
         sameSite: 'lax'
     }
 }));
@@ -36,8 +36,8 @@ app.use(passport.session());
 require('./config/mongoose.config');
 
 // Route handling
-const authRoutes = require('./routes/auth.route');
-const userRoutes = require('./routes/user.route');
+const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);

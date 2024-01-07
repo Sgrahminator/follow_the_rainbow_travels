@@ -18,3 +18,4 @@ router.get('/user', requireAuth, AuthController.getAuthenticatedUser);
 module.exports = router;
 
 
+

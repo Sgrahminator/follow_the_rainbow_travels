@@ -17,10 +17,10 @@ const SafetyTipController = {
     },
 
     // Get all safety tips
-    getAllSafetyTips: async (req, res) => {
+    getAllSafetyTip: async (req, res) => {
         try {
-            const safetyTips = await SafetyTip.find().populate('user', 'username');
-            res.status(200).json(safetyTips);
+            const safetyTip = await SafetyTip.find().populate('user', 'username');
+            res.status(200).json(safetyTip);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
@@ -34,6 +34,22 @@ const SafetyTipController = {
             if (!safetyTip) {
                 return res.status(404).json({ error: 'Safety tip not found' });
             }
+            res.status(200).json(safetyTip);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    // Get all safety tips by a specific user
+    getSafetyTipByUser: async (req, res) => {
+        try {
+            const { userId } = req.params;
+            const safetyTip = await SafetyTip.find({ user: userId }).populate('user', 'username');
+
+            if (safetyTip.length === 0) {
+                return res.status(404).json({ message: 'No safety tips found for this user' });
+            }
+
             res.status(200).json(safetyTip);
         } catch (error) {
             res.status(500).json({ error: error.message });

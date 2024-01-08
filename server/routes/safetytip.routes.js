@@ -6,7 +6,7 @@ const SafetyTipController = require('../controllers/safetytip.controller');
 const { requireAuth } = require('../middleware/authMiddleware');
 
 // Get a list of all safety tips
-router.get('/safetytip', requireAuth, SafetyTipController.getAllSafetyTips);
+router.get('/safetytip', requireAuth, SafetyTipController.getAllSafetyTip);
 
 // Create a new safety tip
 router.post('/safetytip', requireAuth, SafetyTipController.createSafetyTip);

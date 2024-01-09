@@ -109,5 +109,3 @@ const SubmissionController = {
 };
 
 module.exports = SubmissionController;
-
-

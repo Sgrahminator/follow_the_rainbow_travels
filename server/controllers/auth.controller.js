@@ -3,6 +3,7 @@ const passport = require('passport');
 
 const AuthController = {
     registerUser: async (req, res) => {
+        console.log(req.body);
         try {
             const { name, username, pronouns, membershipType, email, password, confirmPassword } = req.body;
 
@@ -26,7 +27,8 @@ const AuthController = {
             await newUser.save();
             res.status(201).json({ message: 'User registered successfully', newUser });
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            console.error("Registration Error: ", error); 
+            res.status(500).json({ error: "Internal Server Error", details: error.message });
         }
     },
 
@@ -53,4 +55,3 @@ const AuthController = {
 };
 
 module.exports = AuthController;
-

@@ -49,9 +49,6 @@ const userSchema = new mongoose.Schema({
 
 // Virtual for confirmPassword
 userSchema.virtual('confirmPassword')
-    .get(function() {
-        return this._confirmPassword;
-    })
     .set(function(value) {
         this._confirmPassword = value;
     });
@@ -66,8 +63,10 @@ userSchema.pre('validate', function(next) {
 
 // Middleware to hash password before saving
 userSchema.pre('save', async function(next) {
-    if (this.isModified('password') || this.isNew) {
-        this.password = await bcrypt.hash(this.password, 12);
+    // Check if password is modified
+    if (this.isModified('password')) {
+        const salt = await bcrypt.genSalt(12);
+        this.password = await bcrypt.hash(this.password, salt);
     }
     next();
 });
@@ -78,9 +77,3 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
 };
 
 module.exports = mongoose.model('User', userSchema);
-
-
-
-
-
-

@@ -29,7 +29,7 @@ const allyquestionSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-// You may want to add indexing based on your query needs, e.g.,
+// Indexing based on my query needs - others may need to be added
 allyquestionSchema.index({ 'user': 1 });
 
 module.exports = mongoose.model('AllyQuestion', allyquestionSchema);

@@ -8,7 +8,7 @@ const CategoryController = {
             const categories = await Category.find({});
             res.status(200).json(categories);
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Internal Server Error" });
         }
     },
 
@@ -16,28 +16,33 @@ const CategoryController = {
     getCategoryById: async (req, res) => {
         try {
             const categoryId = req.params.id;
-            const category = await Category.findById(categoryId).lean();
+            const sortOption = req.query.sort || "ratings.rating";
+            const sortOrder = req.query.order === "asc" ? 1 : -1;
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const skip = (page - 1) * limit;
 
+            const category = await Category.findById(categoryId).lean();
             if (!category) {
                 return res.status(404).json({ message: 'Category not found' });
             }
 
-            // Aggregate top-rated submissions for this category
             const submissions = await Submission.aggregate([
                 { $match: { categories: categoryId } },
                 { $unwind: "$ratings" },
-                { $sort: { "ratings.rating": -1 } },
-                { $limit: 10 },
+                { $sort: { [sortOption]: sortOrder } },
+                { $skip: skip },
+                { $limit: limit },
                 { $lookup: { from: "users", localField: "user", foreignField: "_id", as: "userDetails" } },
                 { $project: { name: 1, description: 1, userDetails: { $arrayElemAt: ["$userDetails", 0] } } }
             ]);
 
             res.status(200).json({ category, submissions });
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Internal Server Error" });
         }
     },
-
 };
 
 module.exports = CategoryController;
+

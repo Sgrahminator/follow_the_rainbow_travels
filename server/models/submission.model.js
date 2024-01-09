@@ -30,14 +30,9 @@ const submissionSchema = new mongoose.Schema({
         validate: [urlValidator, 'Invalid URL']
     }],
     isLGBTQIAOwned: {
-        type: Boolean,
+        type: String,
+        enum: ['Yes', 'No', 'Not Sure'],
         required: true,
-        default: false,
-    },
-    isLGBTQIAFriendly: {
-        type: Boolean,
-        required: true,
-        default: false,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -51,7 +46,7 @@ const submissionSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true, // Making rating required
+        required: true, 
         min: 1,
         max: 7,
     },

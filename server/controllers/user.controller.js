@@ -3,7 +3,7 @@ const Submission = require('../models/submission.model');
 const Review = require('../models/review.model');
 const SafetyTip = require('../models/safetytip.model');
 const AllyPost = require('../models/allypost.model');
-const AllyQuestion = require('../models/allyquestion.model');
+const AllyQuestionAnswer = require('../models/allyquestionanswer.model');
 
 const UserController = {
     getUserProfile: async (req, res) => {
@@ -14,7 +14,7 @@ const UserController = {
             const userReviews = await Review.find({ user: userId });
             const userSafetyTips = await SafetyTip.find({ user: userId });
             const userAllyPosts = await AllyPost.find({ user: userId });
-            const userAllyQuestions = await AllyQuestion.find({ user: userId });
+            const userAllyQuestionAnswer = await AllyQuestionAnswer.find({ user: userId });
 
             res.status(200).json({ 
                 userProfile: user, 
@@ -22,7 +22,7 @@ const UserController = {
                 reviews: userReviews,
                 safetyTips: userSafetyTips,
                 allyPosts: userAllyPosts,
-                allyQuestions: userAllyQuestions 
+                allyQuestionAnswer: userAllyQuestionAnswer
             });
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -37,7 +37,7 @@ const UserController = {
             const userReviews = await Review.find({ user: userId });
             const userSafetyTips = await SafetyTip.find({ user: userId });
             const userAllyPosts = await AllyPost.find({ user: userId });
-            const userAllyQuestions = await AllyQuestion.find({ user: userId }); 
+            const userAllyQuestionAnswer = await AllyQuestionAnswer.find({ user: userId }); 
 
             res.status(200).json({ 
                 userProfile: user, 
@@ -45,7 +45,7 @@ const UserController = {
                 reviews: userReviews,
                 safetyTips: userSafetyTips, 
                 allyPosts: userAllyPosts,
-                allyQuestions: userAllyQuestions
+                allyQuestionAnswer: userAllyQuestionAnswer
             });
         } catch (error) {
             res.status(500).json({ error: error.message });

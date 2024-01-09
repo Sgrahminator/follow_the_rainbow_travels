@@ -1,27 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const AllyQuestionController = require('../controllers/allyquestionanswer.controller'); 
+const AllyQuestionAnswerController = require('../controllers/allyquestionanswer.controller'); 
 const { requireAuth } = require('../middleware/authMiddleware');
 
 // Create a new question
-router.post('/allyquestion', requireAuth, AllyQuestionController.createAllyQuestion);
+router.post('/allyquestionanswer', requireAuth, AllyQuestionAnswerController.createAllyQuestion);
 
 // Get a specific question with its answers
-router.get('/allyquestion/:id', requireAuth, AllyQuestionController.getAllyQuestionById);
+router.get('/allyquestionanswer/:id', requireAuth, AllyQuestionAnswerController.getAllyQuestionById);
 
 // Get all questions with their answers
-router.get('/allyquestions', requireAuth, AllyQuestionController.getAllAllyQuestions);
+router.get('/allyquestionanswer', requireAuth, AllyQuestionAnswerController.getAllAllyQuestions);
 
 // Update a question or answer (if the authorized user)
-router.put('/allyquestion/:id', requireAuth, AllyQuestionController.updateAllyQuestion);
+router.put('/allyquestionanswer/:id', requireAuth, AllyQuestionAnswerController.updateAllyQuestion);
 
 // Delete a question or answer (if the authorized user)
-router.delete('/allyquestion/:id', requireAuth, AllyQuestionController.deleteAllyQuestion);
+router.delete('/allyquestionanswer/:id', requireAuth, AllyQuestionAnswerController.deleteAllyQuestion);
 
 // Get all questions/answers from a specific user
-router.get('/user-allyquestions/:userId', requireAuth, AllyQuestionController.getAllyQuestionsByUser);
+router.get('/user-allyquestionanswer/:userId', requireAuth, AllyQuestionAnswerController.getAllyQuestionsByUser);
 
 // Add an answer to a question
-router.post('/allyquestion/:id/answer', requireAuth, AllyQuestionController.addAnswerToQuestion);
+router.post('/allyquestionanswer/:id/answer', requireAuth, AllyQuestionAnswerController.addAnswerToQuestion);
 
 module.exports = router;

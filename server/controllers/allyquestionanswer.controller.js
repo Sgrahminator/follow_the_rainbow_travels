@@ -1,10 +1,10 @@
-const AllyQuestion = require('../models/allyquestionanswer.model');
+const AllyQuestionAnswer = require('../models/allyquestionanswer.model');
 
-const AllyQuestionController = {
+const AllyQuestionAnswerController = {
     createAllyQuestion: async (req, res) => {
         try {
             const { question } = req.body;
-            const newAllyQuestion = await AllyQuestion.create({ question, user: req.user._id });
+            const newAllyQuestion = await AllyQuestionAnswer.create({ question, user: req.user._id });
             res.status(201).json({ message: 'Ally Question created successfully', allyQuestion: newAllyQuestion });
         } catch (error) {
             res.status(400).json({ error: error.message });
@@ -13,7 +13,7 @@ const AllyQuestionController = {
 
     getAllyQuestionById: async (req, res) => {
         try {
-            const allyQuestion = await AllyQuestion.findById(req.params.id).populate('answers.user', 'username');
+            const allyQuestion = await AllyQuestionAnswer.findById(req.params.id).populate('answers.user', 'username');
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
             }
@@ -25,7 +25,7 @@ const AllyQuestionController = {
 
     getAllAllyQuestions: async (req, res) => {
         try {
-            const allyQuestions = await AllyQuestion.find().populate('user', 'username').populate('answers.user', 'username');
+            const allyQuestions = await AllyQuestionAnswer.find().populate('user', 'username').populate('answers.user', 'username');
             res.status(200).json(allyQuestions);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -37,7 +37,7 @@ const AllyQuestionController = {
             const { id } = req.params;
             const { question } = req.body;
 
-            const allyQuestion = await AllyQuestion.findById(id);
+            const allyQuestion = await AllyQuestionAnswer.findById(id);
 
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
@@ -60,7 +60,7 @@ const AllyQuestionController = {
             const { questionId, answerId } = req.params;
             const { answer } = req.body;
 
-            const allyQuestion = await AllyQuestion.findById(questionId);
+            const allyQuestion = await AllyQuestionAnswer.findById(questionId);
 
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
@@ -84,7 +84,7 @@ const AllyQuestionController = {
             const { id } = req.params; // question ID
             const { answer } = req.body;
 
-            const allyQuestion = await AllyQuestion.findById(id);
+            const allyQuestion = await AllyQuestionAnswer.findById(id);
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
             }
@@ -102,7 +102,7 @@ const AllyQuestionController = {
             const { id } = req.params;
             const { answerId } = req.body;
 
-            const allyQuestion = await AllyQuestion.findById(id);
+            const allyQuestion = await AllyQuestionAnswer.findById(id);
 
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
@@ -126,7 +126,7 @@ const AllyQuestionController = {
 
             // Delete the entire Question
             if (allyQuestion.user.toString() === req.user._id.toString()) {
-                await AllyQuestion.findByIdAndRemove(id);
+                await AllyQuestionAnswer.findByIdAndRemove(id);
                 return res.status(200).json({ message: 'Ally Question and all associated answers deleted' });
             } else {
                 return res.status(403).json({ message: 'User not authorized to delete this question' });
@@ -140,7 +140,7 @@ const AllyQuestionController = {
         try {
             const { questionId, answerId } = req.params;
 
-            const allyQuestion = await AllyQuestion.findById(questionId);
+            const allyQuestion = await AllyQuestionAnswer.findById(questionId);
             if (!allyQuestion) {
                 return res.status(404).json({ message: 'Ally Question not found' });
             }
@@ -165,7 +165,7 @@ const AllyQuestionController = {
     getAllyQuestionsByUser: async (req, res) => {
         try {
             const { userId } = req.params;
-            const allyQuestions = await AllyQuestion.find({ user: userId }).populate('user', 'username');
+            const allyQuestions = await AllyQuestionAnswer.find({ user: userId }).populate('user', 'username');
             res.status(200).json(allyQuestions);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -173,4 +173,4 @@ const AllyQuestionController = {
     }
 };
 
-module.exports = AllyQuestionController;
+module.exports = AllyQuestionAnswerController;

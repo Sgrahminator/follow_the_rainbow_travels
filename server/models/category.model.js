@@ -23,7 +23,3 @@ const categorySchema = new mongoose.Schema({
 categorySchema.index({ name: 1 });
 
 module.exports = mongoose.model('Category', categorySchema);
-
-
-
-

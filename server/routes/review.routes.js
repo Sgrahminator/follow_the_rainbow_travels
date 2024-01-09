@@ -24,4 +24,3 @@ router.put('/review/:id', requireAuth,  ReviewController.updateReview);
 router.delete('/review/:id', requireAuth,  ReviewController.deleteReview);
 
 module.exports = router;
-

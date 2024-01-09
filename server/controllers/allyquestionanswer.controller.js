@@ -1,5 +1,4 @@
-const AllyQuestion = require('../models/allyquestion.model');
-const User = require('../models/user.model'); // Ensure this path is correct
+const AllyQuestion = require('../models/allyquestionanswer.model');
 
 const AllyQuestionController = {
     createAllyQuestion: async (req, res) => {
@@ -117,4 +116,3 @@ const AllyQuestionController = {
 };
 
 module.exports = AllyQuestionController;
-

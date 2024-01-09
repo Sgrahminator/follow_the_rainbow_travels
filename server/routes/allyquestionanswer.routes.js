@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AllyQuestionController = require('../controllers/allyquestion.controller'); 
+const AllyQuestionController = require('../controllers/allyquestionanswer.controller'); 
 const { requireAuth } = require('../middleware/authMiddleware');
 
 // Create a new question
@@ -22,5 +22,3 @@ router.delete('/allyquestion/:id', requireAuth, AllyQuestionController.deleteAll
 router.get('/user-allyquestions/:userId', requireAuth, AllyQuestionController.getAllyQuestionsByUser);
 
 module.exports = router;
-
-

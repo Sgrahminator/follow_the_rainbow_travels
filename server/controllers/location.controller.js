@@ -24,4 +24,3 @@ const LocationController = {
 };
 
 module.exports = LocationController;
-

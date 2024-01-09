@@ -12,4 +12,3 @@ router.get('/categories', requireAuth, CategoryController.getAllCategories);
 router.get('/category/:id', requireAuth, CategoryController.getCategoryById);
 
 module.exports = router;
-

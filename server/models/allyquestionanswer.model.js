@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const allyquestionSchema = new mongoose.Schema({
+const allyquestionanswerSchema = new mongoose.Schema({
     question: {
         type: String,
         required: [true, 'Question cannot be empty'],
@@ -30,7 +30,6 @@ const allyquestionSchema = new mongoose.Schema({
 });
 
 // Indexing based on my query needs - others may need to be added
-allyquestionSchema.index({ 'user': 1 });
+allyquestionanswerSchema.index({ 'user': 1 });
 
-module.exports = mongoose.model('AllyQuestion', allyquestionSchema);
-
+module.exports = mongoose.model('AllyQuestionAnswer', allyquestionanswerSchema);

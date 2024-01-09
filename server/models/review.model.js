@@ -39,5 +39,3 @@ const reviewSchema = new mongoose.Schema({
 reviewSchema.index({ submission: 1, user: 1 });
 
 module.exports = mongoose.model('Review', reviewSchema);
-
-

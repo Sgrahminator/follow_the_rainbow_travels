@@ -21,5 +21,3 @@ router.put('/submission/:id', requireAuth, SubmissionController.updateSubmission
 router.delete('/submission/:id', requireAuth, SubmissionController.deleteSubmission);
 
 module.exports = router;
-
-

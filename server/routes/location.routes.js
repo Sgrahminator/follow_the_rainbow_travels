@@ -9,4 +9,3 @@ router.get('/locations', LocationController.getAllLocations);
 router.get('/locations/:id', LocationController.getLocationById);
 
 module.exports = router;
-

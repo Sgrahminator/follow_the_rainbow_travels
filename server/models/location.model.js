@@ -18,4 +18,3 @@ const locationSchema = new mongoose.Schema({
 locationSchema.index({ name: 1, type: 1 }); 
 
 module.exports = mongoose.model('Location', locationSchema);
-

@@ -21,4 +21,7 @@ router.delete('/allyquestion/:id', requireAuth, AllyQuestionController.deleteAll
 // Get all questions/answers from a specific user
 router.get('/user-allyquestions/:userId', requireAuth, AllyQuestionController.getAllyQuestionsByUser);
 
+// Add an answer to a question
+router.post('/allyquestion/:id/answer', requireAuth, AllyQuestionController.addAnswerToQuestion);
+
 module.exports = router;

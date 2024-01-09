@@ -9,7 +9,7 @@ const SubmissionController = {
             await newSubmission.save();
             res.status(201).json(newSubmission);
         } catch (error) {
-            res.status(400).json({ message: error.message });
+            res.status(400).json({ message: "Error creating submission: " + error.message });
         }
     },
 
@@ -24,7 +24,7 @@ const SubmissionController = {
             const reviews = await Review.find({ submission: req.params.id });
             res.status(200).json({ submission, reviews });
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Error fetching submission: " + error.message });
         }
     },
 
@@ -33,6 +33,9 @@ const SubmissionController = {
             let query = {};
             let sort = {};
             let aggregatePipeline = [];
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 20;
+            const skip = (page - 1) * limit;
 
             // Filter by location
             if (req.query.location) {
@@ -66,6 +69,9 @@ const SubmissionController = {
                 aggregatePipeline.push({ $sort: sort });
             }
 
+            aggregatePipeline.push({ $skip: skip });
+            aggregatePipeline.push({ $limit: limit });
+
             const submissions = await Submission.aggregate(aggregatePipeline)
                 .populate('user', 'name')
                 .populate('categories')
@@ -73,7 +79,7 @@ const SubmissionController = {
 
             res.status(200).json(submissions);
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Error fetching submissions: " + error.message });
         }
     },
 
@@ -89,7 +95,7 @@ const SubmissionController = {
             }
             res.status(200).json(submission);
         } catch (error) {
-            res.status(400).json({ message: error.message });
+            res.status(400).json({ message: "Error updating submission: " + error.message });
         }
     },
 
@@ -103,9 +109,10 @@ const SubmissionController = {
             }
             res.status(200).json({ message: 'Submission deleted successfully' });
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Error deleting submission: " + error.message });
         }
     }
 };
 
 module.exports = SubmissionController;
+

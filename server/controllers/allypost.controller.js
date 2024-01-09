@@ -1,5 +1,4 @@
 const AllyPost = require('../models/allypost.model');
-const User = require('../models/user.model');
 
 const AllyPostController = {
     createAllyPost: async (req, res) => {
@@ -19,7 +18,7 @@ const AllyPostController = {
 
     getAllAllyPosts: async (req, res) => {
         try {
-            const allyPosts = await AllyPost.find().populate('user', 'email');
+            const allyPosts = await AllyPost.find().populate('user', 'username'); // Changed from 'email' to 'username'
             res.status(200).json(allyPosts);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -28,7 +27,7 @@ const AllyPostController = {
 
     getAllyPostById: async (req, res) => {
         try {
-            const allyPost = await AllyPost.findById(req.params.id).populate('user', 'email');
+            const allyPost = await AllyPost.findById(req.params.id).populate('user', 'username'); // Changed from 'email' to 'username'
             if (!allyPost) {
                 return res.status(404).json({ message: 'AllyPost not found' });
             }
@@ -40,7 +39,7 @@ const AllyPostController = {
 
     getAllyPostsByUser: async (req, res) => {
         try {
-            const allyPosts = await AllyPost.find({ user: req.params.userId });
+            const allyPosts = await AllyPost.find({ user: req.params.userId }).populate('user', 'username'); // Populate with 'username'
             res.status(200).json(allyPosts);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -49,11 +48,15 @@ const AllyPostController = {
 
     updateAllyPost: async (req, res) => {
         try {
+            const { content, images } = req.body; // Limiting update to content and images only
             const allyPost = await AllyPost.findOne({ _id: req.params.id, user: req.user._id });
             if (!allyPost) {
                 return res.status(404).json({ message: 'AllyPost not found or not authorized' });
             }
-            Object.assign(allyPost, req.body);
+
+            if (content) allyPost.content = content;
+            if (images) allyPost.images = images;
+
             await allyPost.save();
             res.status(200).json({ message: 'AllyPost updated successfully', allyPost });
         } catch (error) {

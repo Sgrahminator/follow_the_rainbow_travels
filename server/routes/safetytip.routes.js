@@ -12,10 +12,10 @@ router.get('/safetytip', requireAuth, SafetyTipController.getAllSafetyTip);
 router.post('/safetytip', requireAuth, SafetyTipController.createSafetyTip);
 
 // Get details of a specific safety tip
-router.get('/safetytip/:id', requireAuth, SafetyTipController.getSafetyTipById);
+router.get('/safetytip/byid/:id', requireAuth, SafetyTipController.getSafetyTipById);
 
 // Get all safety tips by a specific user
-router.get('/safetytip/:userId', requireAuth, SafetyTipController.getSafetyTipByUser);
+router.get('/safetytip/byuser/:userId', requireAuth, SafetyTipController.getSafetyTipByUser);
 
 // Update a submission (if they're the authorized user)
 router.put('/safetytip/:id', requireAuth, SafetyTipController.updateSafetyTip);
@@ -24,5 +24,4 @@ router.put('/safetytip/:id', requireAuth, SafetyTipController.updateSafetyTip);
 router.delete('/safetytip/:id', requireAuth, SafetyTipController.deleteSafetyTip);
 
 module.exports = router;
-
 

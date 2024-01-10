@@ -12,13 +12,18 @@ const submissionSchema = new mongoose.Schema({
         maxlength: 255,
     },
     categories: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+        type: String, 
+        ref: 'Category', 
     }],
     address: {
         type: String,
         trim: true,
         maxlength: 500,
+    },
+    location: {
+        type: String, 
+        ref: 'Location', 
+        required: true,
     },
     description: {
         type: String,
@@ -37,11 +42,6 @@ const submissionSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
-    },
-    location: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Location',
         required: true,
     },
     rating: {

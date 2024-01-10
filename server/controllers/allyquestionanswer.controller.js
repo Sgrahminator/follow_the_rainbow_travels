@@ -156,4 +156,3 @@ const AllyQuestionAnswerController = {
 };
 
 module.exports = AllyQuestionAnswerController;
-

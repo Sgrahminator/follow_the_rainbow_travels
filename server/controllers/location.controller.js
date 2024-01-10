@@ -1,4 +1,4 @@
-const Location = require('./location.model'); 
+const Location = require('../models/location.model'); 
 
 const LocationController = {
     getAllLocations: async (req, res) => {
@@ -10,9 +10,10 @@ const LocationController = {
         }
     },
 
-    getLocationById: async (req, res) => {
+    getLocationByNameAndType: async (req, res) => {
         try {
-            const location = await Location.findById(req.params.id);
+            const { name, type } = req.params; 
+            const location = await Location.findOne({ name, type });
             if (!location) {
                 return res.status(404).json({ message: 'Location not found' });
             }

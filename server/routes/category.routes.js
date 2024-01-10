@@ -9,6 +9,6 @@ const { requireAuth } = require('../middleware/authMiddleware');
 router.get('/categories', requireAuth, CategoryController.getAllCategories);
 
 // Get details of a specific category, accessible only to authenticated users
-router.get('/category/:id', requireAuth, CategoryController.getCategoryById);
+router.get('/category/:name', requireAuth, CategoryController.getCategoryByName);
 
 module.exports = router;

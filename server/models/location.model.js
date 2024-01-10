@@ -6,11 +6,7 @@ const locationSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true, // Removes any whitespace
-    },
-    type: {
-        type: String,
         enum: ['Country', 'City', 'Region', 'State', 'Province', 'Territory'],
-        required: true,
     },
 });
 

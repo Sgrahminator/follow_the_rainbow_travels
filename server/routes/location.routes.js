@@ -6,7 +6,7 @@ const LocationController = require('../controllers/location.controller');
 router.get('/locations', LocationController.getAllLocations);
 
 // Retrieve a single location by name and type
-router.get('/locations/:name/:type', LocationController.getLocationByNameAndType);
+router.get('/locations/:name', LocationController.getLocationByName);
 
 
 module.exports = router;

@@ -52,6 +52,4 @@ app.use('/review', reviewRoutes);
 app.use('/safetytips', safetyTipRoutes);
 app.use('/submission', submissionRoutes);
 
-app.listen(8000, () => {
-    console.log("Listening at Port 8000");
-});
+app.listen(8000, () => {console.log("Listening at Port 8000");});

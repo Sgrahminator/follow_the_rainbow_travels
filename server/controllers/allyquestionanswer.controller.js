@@ -81,7 +81,7 @@ const AllyQuestionAnswerController = {
 
     addAnswerToQuestion: async (req, res) => {
         try {
-            const { id } = req.params; // question ID
+            const { id } = req.params;
             const { answer } = req.body;
 
             const allyQuestion = await AllyQuestionAnswer.findById(id);
@@ -100,7 +100,6 @@ const AllyQuestionAnswerController = {
     deleteAllyQuestion: async (req, res) => {
         try {
             const { id } = req.params;
-            const { answerId } = req.body;
 
             const allyQuestion = await AllyQuestionAnswer.findById(id);
 
@@ -108,23 +107,6 @@ const AllyQuestionAnswerController = {
                 return res.status(404).json({ message: 'Ally Question not found' });
             }
 
-            // Delete an individual Answer
-            if (answerId) {
-                const answerToDelete = allyQuestion.answers.id(answerId);
-                if (!answerToDelete) {
-                    return res.status(404).json({ message: 'Answer not found' });
-                }
-
-                if (answerToDelete.user.toString() !== req.user._id.toString()) {
-                    return res.status(403).json({ message: 'User not authorized to delete this answer' });
-                }
-
-                answerToDelete.remove();
-                await allyQuestion.save();
-                return res.status(200).json({ message: 'Answer deleted successfully' });
-            }
-
-            // Delete the entire Question
             if (allyQuestion.user.toString() === req.user._id.toString()) {
                 await AllyQuestionAnswer.findByIdAndRemove(id);
                 return res.status(200).json({ message: 'Ally Question and all associated answers deleted' });
@@ -174,3 +156,4 @@ const AllyQuestionAnswerController = {
 };
 
 module.exports = AllyQuestionAnswerController;
+

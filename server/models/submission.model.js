@@ -13,7 +13,8 @@ const submissionSchema = new mongoose.Schema({
     },
     categories: [{
         type: String, 
-        ref: 'Category', 
+        required: true,
+        enum: ['Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures'], // Assuming these are the enums from your category model
     }],
     address: {
         type: String,
@@ -22,8 +23,8 @@ const submissionSchema = new mongoose.Schema({
     },
     location: {
         type: String, 
-        ref: 'Location', 
         required: true,
+        enum: ['Country', 'City', 'Region', 'State', 'Province', 'Territory'], // Assuming these are the enums from your location model
     },
     description: {
         type: String,

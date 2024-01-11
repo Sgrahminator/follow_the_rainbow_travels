@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const AllyQuestionAnswerController = require('../controllers/allyquestionanswer.controller'); 
+
+// Require authentication for all routes in this file
 const { requireAuth } = require('../middleware/authMiddleware');
 
 // Create a new question

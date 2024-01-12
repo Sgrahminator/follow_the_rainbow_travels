@@ -14,7 +14,7 @@ const submissionSchema = new mongoose.Schema({
     categories: [{
         type: String, 
         required: true,
-        enum: ['Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures'], // Assuming these are the enums from your category model
+        enum: ['Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures'], // What I've set for the enum, may grow or change
     }],
     address: {
         type: String,
@@ -55,6 +55,7 @@ const submissionSchema = new mongoose.Schema({
     timestamps: true,
 });
 
+// Adding indexing for better query performance
 submissionSchema.index({ name: 1, categories: 1 });
 submissionSchema.index({ isLGBTQIAOwned: 1, isLGBTQIAFriendly: 1 });
 

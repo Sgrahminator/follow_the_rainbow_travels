@@ -1,6 +1,6 @@
-Using Bootstrap - Vite - MERN: Mongoose, Express, React, Node 
+Using Vite - MERN: Mongoose, Express, React, Node - JavaScript
 
-Project Name: "Pride Worldwide"
+Project Name: "follow_the_rainbow_travels"
 
 Concept: A worldwide, user-driven recommendation website where LGBTQIA+ individuals and allies can share and discover LGBTQIA+ friendly and accepting places and/or events across various categories.
 
@@ -9,36 +9,20 @@ Login/Register Page ("/"): User-centric gateway for both returning and new membe
  - Features straightforward login and registration forms with clearly outlined benefits for joining the community. 
  - Emphasizes the platform's commitment to safety, privacy, and respectful interactions. 
  - Login being the usual Email and Password (hashed) form. 
- - Registration will have Name (First and Last), Username (a user created name for themselves), Pronouns (a drop down of options - He/Him, She/Her, They/Them), Membership Type (radio button choice of LGTBQIA+ or Ally), Email, Password (hashed), and Confirm Password (confirm). 
+ - Registration will have Name (First and Last), Username (a unique user created name for themselves), Pronouns (a drop down of options - 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password. 
  - Once logged in the user will direct/route to the Home Page ("/home").
  - Typically the home page would be the main route ("/"), in this case the login/registration page is the main route ("/") - users can not see anything within the website unless they're registered and logged in.
 
-
-*All pages except the login/registration page will have this at the top of their pages*
-Top of page: 
-"Discover and Share LGBTQIA+ Friendly Spots with Confidence — Your Safe Harbor in an Open World"
-
-Top of page Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Corner, and Profile circle/spot.
-- Each button/tab will route/direct to it's respective page.
-- The profile circle/spot will display the users chosen profile image and when clicked on it will have 3 options. 
-1. A link to the users profile page
-2. A link for Support/Contact us
-3. A Logout link
- - Quick-Access tabs will be Home, Categories, About, Safety Tips, and Ally Corner. 
-          - These navigation tabs will be at the top of every page except the Login and Registration page. 
-          - Inline with the Quick Access tabs will be a profile circle. 
-          - This circle when clicked on will drop down 3 options, Profile Page, Support/Contact Us, and Logout. 
-          - Profile page will direct to the user in session's profile page, Support/Contact Us will direct to a Contact Us Page, and Logout will logout the user in session directing the user to the login registration page.
-
-Home Page ("/home"): The main page users/members see once they login - also one of the tab views from the quick-access tabs. 
- - It will have 3 sections that highlight 3 different things
- - 1. top reviewed submissions 2. top reviewers 3. newest additions. 
- - Each section will have a "See All" option that will direct to page with a full display of all submissions in that category. 
- - There will be a place for users to create their own submission.
-    - User Submissions: Users can submit a city, a country, a company, an event, an accommodation, an adventure/vacation, etc. with details like the name of the place/event/ect., address or area, and a brief description including why they think it's LGBTQIA+ friendly, optional photo(s). 
-    - Submissions are how we grow the site and grow recognition for places/events/areas/etc
-    - Once submitted users can then rate the review on a 1 to 5 star rating
-    - Once a specific place/event/area/etc is submitted any other submissions of the same place/event/area/etc will attach to one another
+Home Page ("/home"): This is the main page users/members see once they login
+ - It will have 3 sections that highlight 3 different things and a section to create a new submission.
+ - The 3 sections of highlights1. top reviewed submissions 2. top reviews 3. newest additions. 
+ - Each section will have a "See All" option that will direct to page with a full display of all submissions and their reviews in that category. 
+ - The place for users to create their own submission(s).
+    - User Submissions: Users can submit a submission in one or multiple of the following categories: 'Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures' with details: the name of the place/event/ect., the category or categories it's a part of, the address or area (country, state, city, region), a brief description including why they think it's LGBTQIA+ friendly, an optional photo(s) section, a spot to mark if a submission is LGBTQIA+ owned or not, and a star rating of 1 through 7 for the submission they are submitting. 
+    - Submissions are how we grow the site and grow recognition for places/events/areas/safe-spaces/community-friendly/etc
+    - Once submitted other users can then rate the review on a 1 to 7 star rating as well as leave comments and/or an optional photo(s) of their experience there.
+    - Submissions and reviews are 2 separate things that are also attached to eachother, Every review has to be attached to a submission. Each submission will have the ability to have multiple reviews on it. 
+    - Submissions are created by 1 user and reviews are created by other users in regards to the original users submission.
 
 About Page ("/about"): A detailed explanation of how the page came to be with the rules emphasized about being respectful and no bullying. 
  - An "About Pride Worldwide" section
@@ -47,37 +31,41 @@ About Page ("/about"): A detailed explanation of how the page came to be with th
  - An "Our Promise" section
  - A "Join Us" section
 
-Categories Page ("/categories"): A page to view LGBTQIA+ friendly countries, cities, cruises, bars/nightlife, restaurants, vacation destinations/packages/adventures, accommodations, events, and shopping/company reviews.  
- - There will be different sections for different categories. IE: companies, events, accommodations, adventures/vacation packages, etc.
- - Each section will highlight 5 or more of the top rated reviews in that category
-	- Review/Comments & Ratings: 
+Categories Page ("/categories"): A page to view LGBTQIA+ friendly 'Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures' and their reviews.  
+ - There will be different sections for different category. 
+ - Each section will highlight 5 or more of the most recent submissions in that category
+ - Each submission will have the ability to have reviews (none, 1, or multiple) from other users
+	- Review/Comments, Photo(s), & Ratings: 
 	      - Comments can be up to 1000 characters. 
               - Ratings will be stars with a 1 through 7 option. *each star a different color so if all 7 are chosen it forms a rainbow*
-              - For every submission allow others to comment and rate the submitted place/event/area/etc with the option to "See All" reviews
-		   - If a "See All" is clicked from a specific place/event/area/etc it will take the user to a "SeeAll" page for all reviews submitted for that specific place/event/area/etc with filters specifying or narrowing it down to that specific place/event/area/etc with the option to broaden the filters.
-	- Filter: Users can filter by highest ratings, recent additions, specific category, a specific place/event/area/etc, or city/area/country. 
+              - For every submission allow others to comment, rate, and upload an optional photo(s) with the option to "See All" reviews associated with that specific submission
+		   - If a "See All" is clicked from a specific category or submission it will take the user to a "SeeAll" page for all reviews submitted for that specific submission or a page to view all submission for that specific category.
+ - When viewing a specfic category users can use filters to navigate through submissions (the filters will grow as the app grows)
+	- Filter: Users can filter by highest review ratings (will provide all submissions for that category, just start with the highest rated submission to the lowest rated submission... rated by their reviews), recent additions (will provide all submission for that category, just filter them from the newest to oldest), and oldest submissions (will provide all submission for that category, just filter them from the oldest to newest).
 
 Safety Tips ("/safetytips"): A page where users can learn and share safety tips. 
  - A page of safety tips. 
- - A few given by us/Pride Worldwide and the rest given as input/tips from the users. 
- - The user submitted safety tips can have some highlighted and a link to See All with a filter option to make the search easier. 
+ - A few set by us/'Follow the Rainbow Travels' and the rest given as input/tips from the users. 
+ - The user submitted safety tips can have some highlighted and a link to "See All". 
  - A place for users to submit their own safety tips. 
 
-Ally's Corner ("/allycorner"): A dedicated section where allies can show support, ask questions, and learn about the LGBTQIA+ community.
- - A section for Q&A where Ally's or Users can ask questions and other members can respond. 
- - It will need a See All that directs to a page of all Q&A's. 
- - A section for support posts (text or image or a combo of both), a positive posts section. 
- - It will need a See All that links to a page of all positive posts. 
+Ally Corner ("/allycorner"): A dedicated section where allies can show support with positive posts, ask questions and get answers, and learn about the LGBTQIA+ community.
+ - A section for Q&A where Ally's or  any user can ask questions and other users can respond. 
+ - Every question will have the ability to have an answer or multiple answers attached to it.
+ - It will need a "See All" that directs to a page of all Questions and their answers. 
+ - A section for support posts that can be text or image or a combo of both, a positive posts section. 
+ - It will need a "See All" that links to a page of all positive posts. 
  - A section thanking our allies for their support and love.
+ - Each section is it's own separate thing. Positive posts and the Q&A sections are not related.
 
-Profile Page ("/profile"): A place where users can show places they've been (descriptions and photos), reviews they've done, a brief description of themselves, a spot for a photo for their profile (can be of themselves or something else). 
+Profile Page ("/profile"): A place that will display users name (first and last), username they created, submissions they've done, reviews they've done, an optional brief description of themselves, a spot for an optional photo for their profile. 
  - There will be 2 different views for the profile page depending on if the profile page being viewed is the user in session's profile or another user's profile. 
-       - If the User in session is viewing their profile it should have options to edit, remove, add to each section (Profile image, Name, Username, Pronouns, review submissions, photo submissions, badges earned, and the short description written by the user). 
-       - If the User in session is viewing another members profile there should be no editing options and the profile user will have the option to have their name and username or just their username visible to other users.
+       - If the User in session is viewing their own profile it will show everything discussed above (the users name (first and last), username they created, submissions they've done, reviews they've done, the optional brief description of themselves, and the optional photo) and should have options to edit, remove, or add to each of the following sections: Profile image, Name, Username, Pronouns, and the optional short description written by the user. 
+       - If the User in session is viewing another users profile there should be no editing options and they can view everything discussed above (the users name (first and last)/username/combo, submissions the other user has done, reviews they've done, the optional brief description of the other user (if they did one), and the optional photo). The owner of the profile will have the option to either have their name, username, or both for other users to see. 
 
 *this will be a page added later once the page goes public*
 Admin Page ("/admin"): Moderation is crucial for ensuring the quality, safety, and reliability of user-generated content on the platform. 
- - The admin panel will serve as a dashboard for the team to oversee all activities on Pride Worldwide, allowing us to manage users, reviews, submissions, and more. 
+ - The admin panel will serve as a dashboard for the team to oversee all activities on Follow the Rainbow Travels, allowing us to manage users, reviews, submissions, and more. 
  - The Admin Page serves as a control center for the administrators of Pride Worldwide. 
  - It should be easily navigable, allowing quick access to different functionalities. 
  - It should also have high-level security features like two-factor authentication to ensure only authorized personnel can access it. 
@@ -85,40 +73,4 @@ Admin Page ("/admin"): Moderation is crucial for ensuring the quality, safety, a
 
 
 
-- newPrideWorldWide/
-	- server/
-		- config/
-			- mongoose.config.js *code written and working for login and registration*
-			- passport.config.js *code written and working for login and registration*
-		- controllers/
-			- auth.controller.js *code written and working for login and registration*
-			- user.controller.js *code written and working for login and registration*
-		- middleware/
-			- authMiddleware.js *code written and working for login and registration*
 
-		- models/
-			- allypost.model.js
-			- allyquestion.model.js
-			- category.model.js
-			- cruiseline.model.js
-			- event.model.js
-			- location.model.js
-			- review.model.js
-			- safetytip.model.js
-			- shop.model.js
-			- specialoffer.model.js
-			- subcategory.model.js
-			- submission.model.js
-			- type.model.js
-			- user.model.js *code written and working for login and registration*
-		- routes/
-			- about.route.js
-			- allycorner.route.js
-			- auth.route.js *code written and working for login and registration*
-			- category.route.js
-			- home.route.js
-			- review.route.js
-			- safetytip.route.js
-			- submission.route.js
-			- user.route.js *code written and working for login and registration*
-		- server.js *code written and working for login and registration*

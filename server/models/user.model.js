@@ -43,14 +43,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    submissions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Submission'
-    }],
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-    }],
 }, {
     timestamps: true,
 });

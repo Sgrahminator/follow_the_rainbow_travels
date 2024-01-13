@@ -9,7 +9,9 @@
         "byid",
         "byuser",
         "cruiseline",
+        "fieldname",
         "followtherainbowtravels",
+        "inclusivity",
         "LGBTQIA",
         "LGTBQIA",
         "maxlength",
@@ -19,6 +21,7 @@
         "safetytips",
         "safeytip",
         "specialoffer",
+        "Symrna",
         "whitespaces"
     ]
 }

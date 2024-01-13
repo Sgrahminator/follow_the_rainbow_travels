@@ -56,8 +56,28 @@ const UserController = {
 
     updateUserProfile: async (req, res) => {
         try {
+            // Handling default image selection
+            if (req.body.defaultImage) {
+                req.body.profileImage = `/uploads/${req.body.defaultImage}`;
+            }
+
             const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, { new: true });
             res.status(200).json({ message: 'User profile updated', updatedUser });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    handleProfileImageUpload: async (req, res) => {
+        try {
+            if (!req.file) {
+                throw new Error('No file uploaded.');
+            }
+
+            const imagePath = `/uploads/${req.file.filename}`; // Path to be saved in database
+            const updatedUser = await User.findByIdAndUpdate(req.user._id, { profileImage: imagePath }, { new: true });
+            
+            res.status(200).json({ message: 'Profile image updated successfully', updatedUser });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

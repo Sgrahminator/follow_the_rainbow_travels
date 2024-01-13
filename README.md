@@ -1,17 +1,32 @@
-Using Vite - MERN: Mongoose, Express, React, Node - JavaScript
+Using JavaScript - Vite - MERN: Mongoose, Express, React, Node 
 
 Project Name: "follow_the_rainbow_travels"
 
 Concept: A worldwide, user-driven recommendation website where LGBTQIA+ individuals and allies can share and discover LGBTQIA+ friendly and accepting places and/or events across various categories.
 
-
-Login/Register Page ("/"): User-centric gateway for both returning and new members of the Pride Worldwide community. 
+Login/Register Page ("/"): User-centric gateway for both returning and new members of the Follow the Rainbow Travels community. 
  - Features straightforward login and registration forms with clearly outlined benefits for joining the community. 
  - Emphasizes the platform's commitment to safety, privacy, and respectful interactions. 
  - Login being the usual Email and Password (hashed) form. 
  - Registration will have Name (First and Last), Username (a unique user created name for themselves), Pronouns (a drop down of options - 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password. 
  - Once logged in the user will direct/route to the Home Page ("/home").
  - Typically the home page would be the main route ("/"), in this case the login/registration page is the main route ("/") - users can not see anything within the website unless they're registered and logged in.
+
+*All pages except the login/registration page will have this at the top of their pages*
+Top of page: 
+"Discover and Share LGBTQIA+ Friendly Spots with Confidence — Your Safe Harbor in an Open World"
+
+Top of page Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Corner, and Profile circle/spot.
+- Each button/tab will route/direct to it's respective page.
+- The profile circle/spot will display the users chosen profile image and when clicked on it will have 3 options. 
+1. A link to the users profile page
+2. A link for Support/Contact us
+3. A Logout link
+ - Quick-Access tabs will be Home, Categories, About, Safety Tips, and Ally Corner. 
+          - These navigation tabs will be at the top of every page except the Login and Registration page. 
+          - Inline with the Quick Access tabs will be a profile circle. 
+          - This circle when clicked on will drop down 3 options, Profile Page, Support/Contact Us, and Logout. 
+          - Profile page will direct to the user in session's profile page, Support/Contact Us will direct to a Contact Us Page, and Logout will logout the user in session directing the user to the login registration page.
 
 Home Page ("/home"): This is the main page users/members see once they login
  - It will have 3 sections that highlight 3 different things and a section to create a new submission.
@@ -21,11 +36,11 @@ Home Page ("/home"): This is the main page users/members see once they login
     - User Submissions: Users can submit a submission in one or multiple of the following categories: 'Accommodations', 'Bars/Nightlife', 'Cruises', 'Events', 'Restaurants', 'Shopping', 'Vacations/Adventures' with details: the name of the place/event/ect., the category or categories it's a part of, the address or area (country, state, city, region), a brief description including why they think it's LGBTQIA+ friendly, an optional photo(s) section, a spot to mark if a submission is LGBTQIA+ owned or not, and a star rating of 1 through 7 for the submission they are submitting. 
     - Submissions are how we grow the site and grow recognition for places/events/areas/safe-spaces/community-friendly/etc
     - Once submitted other users can then rate the review on a 1 to 7 star rating as well as leave comments and/or an optional photo(s) of their experience there.
-    - Submissions and reviews are 2 separate things that are also attached to eachother, Every review has to be attached to a submission. Each submission will have the ability to have multiple reviews on it. 
+    - Submissions and reviews are 2 separate things that are also attached to each other, Every review has to be attached to a submission. Each submission will have the ability to have multiple reviews on it. 
     - Submissions are created by 1 user and reviews are created by other users in regards to the original users submission.
 
 About Page ("/about"): A detailed explanation of how the page came to be with the rules emphasized about being respectful and no bullying. 
- - An "About Pride Worldwide" section
+ - An "About Follow the Rainbow Travels" section
  - An "Our Origin" section
  - A "What We Do" Section
  - An "Our Promise" section
@@ -40,7 +55,7 @@ Categories Page ("/categories"): A page to view LGBTQIA+ friendly 'Accommodation
               - Ratings will be stars with a 1 through 7 option. *each star a different color so if all 7 are chosen it forms a rainbow*
               - For every submission allow others to comment, rate, and upload an optional photo(s) with the option to "See All" reviews associated with that specific submission
 		   - If a "See All" is clicked from a specific category or submission it will take the user to a "SeeAll" page for all reviews submitted for that specific submission or a page to view all submission for that specific category.
- - When viewing a specfic category users can use filters to navigate through submissions (the filters will grow as the app grows)
+ - When viewing a specific category users can use filters to navigate through submissions (the filters will grow as the app grows)
 	- Filter: Users can filter by highest review ratings (will provide all submissions for that category, just start with the highest rated submission to the lowest rated submission... rated by their reviews), recent additions (will provide all submission for that category, just filter them from the newest to oldest), and oldest submissions (will provide all submission for that category, just filter them from the oldest to newest).
 
 Safety Tips ("/safetytips"): A page where users can learn and share safety tips. 
@@ -62,15 +77,3 @@ Profile Page ("/profile"): A place that will display users name (first and last)
  - There will be 2 different views for the profile page depending on if the profile page being viewed is the user in session's profile or another user's profile. 
        - If the User in session is viewing their own profile it will show everything discussed above (the users name (first and last), username they created, submissions they've done, reviews they've done, the optional brief description of themselves, and the optional photo) and should have options to edit, remove, or add to each of the following sections: Profile image, Name, Username, Pronouns, and the optional short description written by the user. 
        - If the User in session is viewing another users profile there should be no editing options and they can view everything discussed above (the users name (first and last)/username/combo, submissions the other user has done, reviews they've done, the optional brief description of the other user (if they did one), and the optional photo). The owner of the profile will have the option to either have their name, username, or both for other users to see. 
-
-*this will be a page added later once the page goes public*
-Admin Page ("/admin"): Moderation is crucial for ensuring the quality, safety, and reliability of user-generated content on the platform. 
- - The admin panel will serve as a dashboard for the team to oversee all activities on Follow the Rainbow Travels, allowing us to manage users, reviews, submissions, and more. 
- - The Admin Page serves as a control center for the administrators of Pride Worldwide. 
- - It should be easily navigable, allowing quick access to different functionalities. 
- - It should also have high-level security features like two-factor authentication to ensure only authorized personnel can access it. 
- - We will be separating out admin permissions depending on the level of admin access as well.
-
-
-
-

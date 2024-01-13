@@ -23,7 +23,7 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 60 * 60 * 24, // expires in 24 hours
         httpOnly: true,
-        secure: false, 
+        secure:false, 
         sameSite: 'lax'
     }
 }));
@@ -34,6 +34,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/mongoose.config');
+
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static('server/uploads'));
 
 // Route handling
 const authRoutes = require('./routes/auth.routes');

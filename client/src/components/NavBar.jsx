@@ -87,7 +87,7 @@ const NavBar = () => {
                 {userData ? (
                     <div>
                         <img 
-                        src={userData.profileImage ? `http://localhost:8000/uploads/${userData.profileImage}` : 'path_to_default_image.jpg'}
+                        src={userData.profileImage ? `http://localhost:8000/uploads/${userData.profileImage}` : 'http://localhost:8000/images/New_Symrna_2.jpg'}
                         alt="Profile"
                         className="profile-image"
                     />

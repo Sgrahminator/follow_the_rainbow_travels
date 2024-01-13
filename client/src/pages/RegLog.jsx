@@ -3,10 +3,13 @@ import axios from 'axios';
 
 const RegLog = () => {
     const [registerData, setRegisterData] = useState({
-        name: '', username: '', pronouns: '', membershipType: '', email: '', password: '', confirmPassword: ''
+        name: '', username: '', pronouns: '', membershipType: '', email: '', password: '', 
+        confirmPassword: ''
     });
     const [loginData, setLoginData] = useState({ email: '', password: '' });
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState(''); // Added for success message
+
 
     const handleRegisterChange = (e) => {
         setRegisterData({ ...registerData, [e.target.name]: e.target.value });
@@ -19,22 +22,24 @@ const RegLog = () => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-        const response = await axios.post('/auth/register', registerData);
-        // Redirect or show success message
-        console.log('Registration Success:', response.data);
+            await axios.post('http://localhost:8000/auth/register', registerData);
+            console.log('Registration Success');
+            window.location.reload(); // Refresh page on successful registration
         } catch (err) {
-        setError(err.response?.data?.error || 'Registration failed');
+            setError(err.response?.data?.error || 'Registration failed');
         }
     };
-
+    
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-        const response = await axios.post('/auth/login', loginData, { withCredentials: true });
-        // Redirect or show success message
-        console.log('Login Success:', response.data);
+            await axios.post('http://localhost:8000/auth/login', loginData, { withCredentials: true });
+            setSuccessMessage('Login Successful. Redirecting to home...');
+            setTimeout(() => {
+                window.location.href = '/home'; // Redirect to /home after 3 seconds
+            }, 3000);
         } catch (err) {
-        setError(err.response?.data?.error || 'Login failed');
+            setError(err.response?.data?.error || 'Login failed');
         }
     };
 
@@ -93,13 +98,13 @@ const RegLog = () => {
                 <h3>Why Join?</h3>
                 <p>Share your recommendations and reviews for LGBTQIA+ friendly places across categories 
                 like bars, restaurants, vacations, and more.
-                <break></break>
+                <br></br>
                 Engage with a global community that is passionate about safe and welcoming spaces.
-                <break></break>
+                <br></br>
                 Explore highly-rated places that you might not know about.
-                <break></break>
+                <br></br>
                 Share or receive invaluable safety tips.
-                <break></break>
+                <br></br>
                 Learn and interact with allies in our Ally Corner.</p>
 
                 <h3>Our Commitment to Safety and Respect</h3>
@@ -109,6 +114,7 @@ const RegLog = () => {
                 of Service. In keeping with the spirit of our community, we emphasize respectful 
                 interaction. Any form of harassment or bullying will not be tolerated.</p>
             </div>
+            {successMessage && <p>{successMessage}</p>} {/* Display success message */}
         </div>
     );
 };

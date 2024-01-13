@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import DefaultProfileImages from './DefaultProfileImages'; // Import the DefaultProfileImages component
-import './NavBar.css';
+import DefaultProfileImages from './DefaultProfileImages';
 
 const NavBar = () => {
     const [userData, setUserData] = useState(null);

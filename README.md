@@ -4,13 +4,73 @@ Project Name: "follow_the_rainbow_travels"
 
 Concept: A worldwide, user-driven recommendation website where LGBTQIA+ individuals and allies can share and discover LGBTQIA+ friendly and accepting places and/or events across various categories.
 
-Login/Register Page ("/"): User-centric gateway for both returning and new members of the Follow the Rainbow Travels community. 
- - Features straightforward login and registration forms with clearly outlined benefits for joining the community. 
- - Emphasizes the platform's commitment to safety, privacy, and respectful interactions. 
+Login/Register Page ("/"): User-centric gateway for both returning and new members of the "Follow the Rainbow Travels" community. 
+ - Features straightforward registration and login forms with clearly outlined benefits for joining the community. 
+ - Emphasizes the platform's commitment to safety, privacy, and respectful interactions.  
+ - Registration will have Name (First and Last), Username (a unique user created name for themselves), Pronouns (a drop down of options - 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password.
  - Login being the usual Email and Password (hashed) form. 
- - Registration will have Name (First and Last), Username (a unique user created name for themselves), Pronouns (a drop down of options - 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password. 
- - Once logged in the user will direct/route to the Home Page ("/home").
+ - Once registered properly the user will receive a successfully registered message, the page will refresh, and the user will be directed to the Login section.
+ - Once logged in the user will be directed to the Home Page ("/home").
  - Typically the home page would be the main route ("/"), in this case the login/registration page is the main route ("/") - users can not see anything within the website unless they're registered and logged in.
+
+
+LOGIN/REGISTRATION PAGE
+
+This is one, single page and Registration and Login need to work as separate functions, yet work seamlessly together.
+
+Main Content: 
+*The registration section will be aligned to the left side of the page and the login section will be beside or next to it aligned to the right. Then under registration and login there will be several sections: "Membership Exclusivity for Your Safety", "Why Join", and "Our Commitment to Safety and Respect."*
+
+*Registration* - This section is aligned to the far left of the page with the Login section directly next to it aligned to the far right of the page. It will have the following above the form:
+For New Adventurers:
+Not signed up yet? What are you waiting for? Become a part of our inclusive community and gain access to a world of recommendations and experiences that you won’t find anywhere else. A place to feel safe, show support, and be yourself.
+
+The Form should look like this:
+First and Last Name: *Both first and last name - Name is required - Must be a minimum of 2 characters*
+Username: *a unique name the user chooses for themselves - Username is required - Must be a minimum of 2 characters*
+Pronouns: *a drop down choice of 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'*
+Membership Type: *Radio buttons with the options, 'LGBTQIA+' or 'Ally'*
+Email: the users email *Email is required - Email must be in correct format. example: 'abc@xyz.com' - Must be a minimum of 9 characters*
+Create a Password: *hashed - Password is required - Must be a minimum of 8 characters - Must be a mixture of upper and lower case - must be a mixture of letters and numbers*
+Confirm Password: *hashed - Confirm Password is required - Must match Password*
+
+Directly below the form is a button that says "Register"
+
+Once registered properly the user clicks the Register button, receives a successfully registered message, and is directed to the login section
+
+*Login* - This section is aligned to the far right of the page with the Registration section directly next to it aligned to the far left of the page. It will have the following above the form:
+For Returning Users:
+Are you an explorer who has already joined our mission? Welcome back! Just enter your email and password below to jump right back into discovering and recommending LGBTQIA+ friendly and accepting spaces.
+
+The Form should look like this:
+Email: *the users email they used to register - Email is required - Email must be in correct format. example: 'abc@xyz.com'*
+Password: *hashed - Password is required*
+  - If the password or email are incorrect or not register the wording should state 'Account not Found', to try and keep things more secure*
+
+Directly below the form is a button that says "Login"
+
+Once logged in properly the user clicks the Login button, receives a successfully logged in message, and is directed to the HomePage ("/home")
+
+*Below the login/registration section will be the following sections*
+
+Membership Exclusivity for Your Safety:
+We are deeply committed to the safety and well-being of our community. Access to specific content and features on Follow The Rainbow Travels is reserved exclusively for our registered members. This level of exclusivity is necessary to ensure a secure, private, and respectful environment. When you join us, you are not just gaining access to reviews, recommendations, and safety tips; you are joining a protected network dedicated to promoting LGBTQIA+ friendly spaces across the globe. We take your safety seriously and work tirelessly to vet all contributions to our platform. So why not join us and become part of a global community that thrives on respect, safety, and inclusivity?
+
+
+Why Join?
+Share your recommendations and reviews for LGBTQIA+ friendly places across categories like bars, restaurants, vacations, and more.
+
+Engage with a global community that's passionate about safe and welcoming spaces.
+
+Explore highly-rated places that you might not know about.
+
+Share or receive invaluable safety tips.
+
+Learn and interact with allies in our Ally Corner.
+
+
+Our Commitment to Safety and Respect:
+We value each member's privacy and safety. Rest assured that your information will be kept secure. For more details, visit our Privacy Policy and Terms of Service. In keeping with the spirit of our community, we emphasize respectful interaction. Any form of harassment or bullying will not be tolerated.
 
 *All pages except the login/registration page will have this at the top of their pages*
 Top of page: 

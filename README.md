@@ -76,17 +76,14 @@ We value each member's privacy and safety. Rest assured that your information wi
 Top of page: 
 "Discover and Share LGBTQIA+ Friendly Spots with Confidence — Your Safe Harbor in an Open World"
 
-Top of page Navigation: Quick-access tabs for Home, About, Categories, Safety Tips, Ally Corner, and Profile circle/spot.
-- Each button/tab will route/direct to it's respective page.
-- The profile circle/spot will display the users chosen profile image and when clicked on it will have 3 options. 
+Top of page Navigation: Links for Home, About, Categories, Safety Tips, Ally Corner, and a Profile circle.
+- Each link will route/direct to it's respective page.
+- The profile circle will display the users chosen profile image or the default image if none is uploaded and when clicked on it will have 2 options. 
 1. A link to the users profile page
-2. A link for Support/Contact us
-3. A Logout link
- - Quick-Access tabs will be Home, Categories, About, Safety Tips, and Ally Corner. 
-          - These navigation tabs will be at the top of every page except the Login and Registration page. 
+2. A Logout link
           - Inline with the Quick Access tabs will be a profile circle. 
-          - This circle when clicked on will drop down 3 options, Profile Page, Support/Contact Us, and Logout. 
-          - Profile page will direct to the user in session's profile page, Support/Contact Us will direct to a Contact Us Page, and Logout will logout the user in session directing the user to the login registration page.
+          - This circle when clicked on will drop down 2 options, Profile Page and Logout. 
+          - Profile page will direct to the user in session's profile page and Logout will logout the user in session directing the user to the login registration page ("/).
 
 Home Page ("/home"): This is the main page users/members see once they login
  - It will have 3 sections that highlight 3 different things and a section to create a new submission.

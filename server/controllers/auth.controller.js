@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const passport = require('passport');
+const { getRandomProfileImage } = require('../util/imageUtility'); // Ensure the path is correct
 
 const AuthController = {
     registerUser: async (req, res) => {
@@ -22,6 +23,7 @@ const AuthController = {
                 email,
                 password,
                 confirmPassword,
+                profileImage: `/images/${getRandomProfileImage()}` // Set a random profile image
             });
 
             await newUser.save();

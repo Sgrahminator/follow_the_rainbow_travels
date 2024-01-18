@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import DefaultProfileImages from './DefaultProfileImages';
 
 const NavBar = () => {
     const [userData, setUserData] = useState(null);
+    const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
 
-    // useEffect hook for fetching user data on component mount
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -28,53 +27,26 @@ const NavBar = () => {
         fetchUserData();
     }, []);
 
-    // Function to handle logout
     const handleLogout = async () => {
         try {
             const response = await fetch('http://localhost:8000/auth/logout', {
                 method: 'GET',
-                credentials: 'include', // to ensure cookies are sent with the request
+                credentials: 'include',
             });
     
             if (!response.ok) {
                 throw new Error('Logout failed');
             }
     
-            // Assuming logout is successful, navigate to the login
-            navigate('/'); // redirect to login page after logout
+            navigate('/');
         } catch (error) {
             console.error('There was an error logging out:', error);
-        }
-    };
-
-    // Function to handle image selection
-    const handleImageSelection = async (imageName) => {
-        try {
-            const response = await fetch('http://localhost:8000/user/profile', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include', // To include the session cookie
-                body: JSON.stringify({ defaultImage: imageName })
-            });
-    
-            if (!response.ok) {
-                throw new Error('Failed to update profile image');
-            }
-    
-            const updatedUserData = await response.json();
-            setUserData(updatedUserData); // Update the userData state with the new data
-        } catch (error) {
-            console.error('There was an error updating the profile image:', error);
-            // Optionally handle this error in the UI as well
         }
     };
 
     return (
         <nav className="navbar">
             <ul className="nav-links">
-                {/* Navigation links */}
                 <li><Link to="/home">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/category">Categories</Link></li>
@@ -85,17 +57,17 @@ const NavBar = () => {
             <div className="profile-section">
                 {userData ? (
                     <div>
-                        <img 
-                        src={userData.profileImage ? `http://localhost:8000/uploads/${userData.profileImage}` : 'http://localhost:8000/images/New_Symrna_2.jpg'}
-                        alt="Profile"
-                        className="profile-image"
-                    />
-                    <div className="dropdown-menu">
-                        <Link to="/profile">Profile</Link>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>
-                    {/* Include DefaultProfileImages component */}
-                    <DefaultProfileImages handleImageSelection={handleImageSelection} />
+                        <div 
+                            className="profile-circle"
+                            onClick={() => setShowDropdown(!showDropdown)}
+                            style={{ backgroundImage: `url(http://localhost:8000/images/${userData.profileImage})` }}
+                        ></div>
+                        {showDropdown && (
+                            <div className="dropdown-menu">
+                                <Link to="/profile">Profile Page</Link>
+                                <Link to="/logout" onClick={handleLogout}>Logout</Link>
+                            </div>
+                        )}
                     </div>
                 ) : <p>Loading...</p>}
             </div>

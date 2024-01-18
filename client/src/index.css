@@ -28,7 +28,7 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f4f4f4; /* Background color for the whole page */
+  background: black; 
 }
 
 h1 {

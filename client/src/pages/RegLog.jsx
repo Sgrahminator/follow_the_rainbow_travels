@@ -6,46 +6,80 @@ const RegLog = () => {
         name: '', username: '', pronouns: '', membershipType: '', email: '', password: '', 
         confirmPassword: ''
     });
+    const [registerErrors, setRegisterErrors] = useState({});
     const [loginData, setLoginData] = useState({ email: '', password: '' });
-    const [error, setError] = useState('');
-    const [successMessage, setSuccessMessage] = useState(''); // Added for success message
+    const [loginErrors, setLoginErrors] = useState({});
+    const [successMessage, setSuccessMessage] = useState('');
 
+    const validateRegistration = (data) => {
+        let errors = {};
+        if (!data.name || data.name.length < 2) errors.name = 'Name is required and must be a minimum of 2 characters';
+        if (!data.username || data.username.length < 2) errors.username = 'Username is required and must be a minimum of 2 characters';
+        if (!data.pronouns) errors.pronouns = 'Pronouns are required';
+        if (!data.membershipType) errors.membershipType = 'Membership Type is required';
+        if (!data.email || data.email.length < 9 || !/\S+@\S+\.\S+/.test(data.email)) errors.email = 'Valid Email is required and must be a minimum of 9 characters';
+        if (!data.password || data.password.length < 8 || !/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/.test(data.password)) errors.password = 'Password is required, must be 8 characters, and a mix of upper/lower case and numbers';
+        if (data.password !== data.confirmPassword) errors.confirmPassword = 'Passwords must match';
+        return errors;
+    };
+
+    const validateLogin = (data) => {
+        let errors = {};
+        if (!data.email || !/\S+@\S+\.\S+/.test(data.email)) errors.email = 'Valid Email is required';
+        if (!data.password) errors.password = 'Password is required';
+        return errors;
+    };
 
     const handleRegisterChange = (e) => {
         setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+        setRegisterErrors({ ...registerErrors, [e.target.name]: '' });
     };
 
     const handleLoginChange = (e) => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
+        setLoginErrors({ ...loginErrors, [e.target.name]: '' });
     };
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post('http://localhost:8000/auth/register', registerData);
-            console.log('Registration Success');
-            window.location.reload(); // Refresh page on successful registration
-        } catch (err) {
-            setError(err.response?.data?.error || 'Registration failed');
+        const newErrors = validateRegistration(registerData);
+        if (Object.keys(newErrors).length > 0) {
+            setRegisterErrors(newErrors);
+        } else {
+            try {
+                await axios.post('http://localhost:8000/auth/register', registerData);
+                setSuccessMessage('Registration Successful. Redirecting to login...');
+                setTimeout(() => {
+                    window.location.href = '/login'; // Redirect to /login
+                }, 3000);
+            } catch (err) {
+                setRegisterErrors({ general: 'Registration failed' });
+            }
         }
     };
-    
+
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post('http://localhost:8000/auth/login', loginData, { withCredentials: true });
-            setSuccessMessage('Login Successful. Redirecting to home...');
-            setTimeout(() => {
-                window.location.href = '/home'; // Redirect to /home after 3 seconds
-            }, 3000);
-        } catch (err) {
-            setError(err.response?.data?.error || 'Login failed');
+        const newErrors = validateLogin(loginData);
+        if (Object.keys(newErrors).length > 0) {
+            setLoginErrors(newErrors);
+        } else {
+            try {
+                await axios.post('http://localhost:8000/auth/login', loginData, { withCredentials: true });
+                setSuccessMessage('Login Successful. Redirecting to home...');
+                setTimeout(() => {
+                    window.location.href = '/home'; // Redirect to /home
+                }, 3000);
+            } catch (err) {
+                setLoginErrors({ general: 'Account not found or Login failed' });
+            }
         }
     };
 
     return (
         <div> 
             <div className="forms-container">
+                {/* Registration Form */}
                 <div className="registration-form">
                 <h3>For New Adventurers:</h3>
                 <p>Not signed up yet? What are you waiting for? Become a part of our inclusive community 
@@ -55,10 +89,12 @@ const RegLog = () => {
                     <div>
                         <label>Name:</label>
                         <input name="name" value={registerData.name} onChange={handleRegisterChange} placeholder="Full Name" autoComplete="name" />
+                        {registerErrors.name && <p style={{ color: 'red' }}>{registerErrors.name}</p>}
                     </div>
                     <div>
                         <label>Username:</label>
                         <input name="username" value={registerData.username} onChange={handleRegisterChange} placeholder="Username" autoComplete="Username" />
+                        {registerErrors.username && <p style={{ color: 'red' }}>{registerErrors.username}</p>}
                     </div>
                     <div>
                         <label>Pronouns:</label>
@@ -69,29 +105,35 @@ const RegLog = () => {
                             <option value="They/Them">They/Them</option>
                             <option value="Other">Other</option>
                         </select>
+                        {registerErrors.pronouns && <p style={{ color: 'red' }}>{registerErrors.pronouns}</p>}
                     </div>
                     <div>
                         <label>Membership Type:</label>
                         <input type="radio" name="membershipType" value="LGBTQIA+" onChange={handleRegisterChange} /> LGBTQIA+
                         <input type="radio" name="membershipType" value="Ally" onChange={handleRegisterChange} /> Ally
+                        {registerErrors.membershipType && <p style={{ color: 'red' }}>{registerErrors.membershipType}</p>}
                     </div>
                     <div>
                         <label>Email:</label>
                         <input name="email" value={registerData.email} onChange={handleRegisterChange} placeholder="Email" autoComplete="email" />
+                        {registerErrors.email && <p style={{ color: 'red' }}>{registerErrors.email}</p>}
                     </div>
                     <div>
                         <label>Password:</label>
                         <input name="password" type="password" value={registerData.password} onChange={handleRegisterChange} placeholder="Password" autoComplete="new-password" />
+                        {registerErrors.password && <p style={{ color: 'red' }}>{registerErrors.password}</p>}
                     </div>
                     <div>
                         <label>Confirm Password:</label>
                         <input name="confirmPassword" type="password" value={registerData.confirmPassword} onChange={handleRegisterChange} placeholder="Confirm Password" autoComplete="new-password" />
+                        {registerErrors.confirmPassword && <p style={{ color: 'red' }}>{registerErrors.confirmPassword}</p>}
                     </div>
                     <button type="submit">Register</button>
-                    </form>
-                    {error && <p>{error}</p>}
+                </form>
+                {registerErrors.general && <p style={{ color: 'red' }}>{registerErrors.general}</p>}
                 </div>
                 
+                {/* Login Form */}
                 <div className="login-form">
                     <h3>For Returning Users:</h3>
                     <p>Are you an explorer who has already joined our mission? Welcome back! Just enter your 
@@ -101,14 +143,16 @@ const RegLog = () => {
                         <div>
                             <label>Email:</label>
                             <input name="email" value={loginData.email} onChange={handleLoginChange} placeholder="Email" autoComplete="email" />
+                            {loginErrors.email && <p style={{ color: 'red' }}>{loginErrors.email}</p>}
                         </div>
                         <div>
                             <label>Password:</label>
                             <input name="password" type="password" value={loginData.password} onChange={handleLoginChange} placeholder="Password" autoComplete="current-password" />
+                            {loginErrors.password && <p style={{ color: 'red' }}>{loginErrors.password}</p>}
                         </div>
                         <button type="submit">Login</button>
                     </form>
-                    {error && <p>{error}</p>}
+                    {loginErrors.general && <p style={{ color: 'red' }}>{loginErrors.general}</p>}
                 </div>
             </div>
 

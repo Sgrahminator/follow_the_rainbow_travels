@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: linear-gradient(to right, rgb(75, 98, 248), rgb(241, 148, 163), white);
 }
 
 .forms-container { 

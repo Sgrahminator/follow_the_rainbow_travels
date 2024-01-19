@@ -19,8 +19,9 @@ const SafetyTipController = {
     // Get all safety tips
     getAllSafetyTip: async (req, res) => {
         try {
-            const safetyTip = await SafetyTip.find().populate('user', 'username');
-            res.status(200).json(safetyTip);
+            const limit = req.query.limit ? parseInt(req.query.limit) : 0; // If limit is provided in the query, parse it to an integer, otherwise, default to 0 (no limit)
+            const safetyTips = await SafetyTip.find().sort({ createdAt: -1 }).limit(limit).populate('user', 'username');
+            res.status(200).json(safetyTips);
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

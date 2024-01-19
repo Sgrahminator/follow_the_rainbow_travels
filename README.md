@@ -121,6 +121,59 @@ Safety Tips ("/safetytips"): A page where users can learn and share safety tips.
  - The user submitted safety tips can have some highlighted and a link to "See All". 
  - A place for users to submit their own safety tips. 
 
+ SAFETY TIPS PAGE
+
+Safety Tips Header: "Safety First, Always"
+
+Introduction: At Follow The Rainbow Travels, we prioritize the well-being of our members. Whether you are exploring a new destination or engaging with others online, we want you to do so safely. Below are some safety guidelines we recommend:
+
+Online Interactions:
+Always protect your personal information. Avoid sharing addresses, phone numbers, or financial details unless you are sure about the site security and the person you are communicating with.
+
+Meet-up Safety:
+If you are meeting someone from the platform or any social media app, always meet in public places and let someone you trust know where you will be.
+
+Local Laws and Customs:
+Always research the local laws and customs related to LGBTQIA+ rights when you're visiting a new country or city. This is especially important for countries where same-sex relationships or LGBTQIA+ activities are criminalized.
+
+Be Cautious While Traveling:
+Use registered and trusted transport services, especially when arriving in a new place. It may be worth splurging a bit on trusted companies rather than taking a risk with an unknown service.
+
+Emergency Contacts:
+Always have local emergency numbers and the number for the embassy for your country when traveling abroad.
+
+Report Incidents:
+If you face discrimination or harassment, report it to local authorities and alert the community by sharing your experience on the platform (if you're comfortable doing so).
+
+Secure Your Account:
+Use strong, unique passwords and consider enabling two-factor authentication for added security.
+
+Health Precautions:
+If you’re attending events, especially in closed spaces, follow health guidelines such as wearing masks and social distancing, as applicable.
+
+Alcohol and Substance Use:
+Be mindful of your alcohol and substance use, particularly in unfamiliar settings.
+
+Trust Your Gut:
+If something feels off, it probably is. Always trust your instincts.
+
+Family and Friends:
+Let someone you trust know your itinerary and check-in regularly, especially if you're exploring a new place or meeting new people.
+
+Accessibility:
+Check in advance if the places you're visiting are accessible if you or someone you're with has special accessibility needs.
+
+Online Interaction/Input From Users: 
+*Users comments and/or safety tips* 
+
+Respect & Community:
+
+Spread Love, Not Hate: Our platform thrives on positivity. Engage respectfully and kindly. Remember, bullying or disrespect will not be tolerated.
+
+Report & Support: Help us maintain a safe space. Report any inappropriate behavior, and we will take necessary action.
+
+Conclusion: Safety is a collective responsibility. While we strive to ensure Follow The Rainbow Travels remains a safe haven, your awareness and prudence play an integral role. Let's together create a safe and welcoming space for everyone!
+
 Ally Corner ("/allycorner"): A dedicated section where allies can show support with positive posts, ask questions and get answers, and learn about the LGBTQIA+ community.
  - A section for Q&A where Ally's or  any user can ask questions and other users can respond. 
  - Every question will have the ability to have an answer or multiple answers attached to it.

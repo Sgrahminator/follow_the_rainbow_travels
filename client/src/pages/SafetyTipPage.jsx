@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import SafetyTips from '../components/SafetyTips';
+import { Link } from 'react-router-dom';
 
 const SafetyTipPage = () => {
     const [safetyTips, setSafetyTips] = useState([]);
@@ -8,7 +9,7 @@ const SafetyTipPage = () => {
         // Fetch existing safety tips when the component mounts
         const fetchSafetyTips = async () => {
             try {
-                const response = await fetch('http://localhost:8000/safetytips/safetytip', {
+                const response = await fetch('http://localhost:8000/safetytips/safetytip?limit=10', {
                     credentials: 'include',
                 });
 
@@ -26,25 +27,27 @@ const SafetyTipPage = () => {
         fetchSafetyTips();
     }, []);
 
-    const handleTipSubmit = async (tip) => {
+    const handleTipSubmit = async (tipText) => {
         try {
             const response = await fetch('http://localhost:8000/safetytips/safetytip', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ tip }),
+                body: JSON.stringify({ tip: tipText }),
                 credentials: 'include',
             });
-
+    
             if (!response.ok) {
-                throw new Error('Failed to submit safety tip');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to submit safety tip');
             }
-
+    
             const newTip = await response.json();
-            setSafetyTips([...safetyTips, newTip]);
+            setSafetyTips(prevTips => [newTip, ...prevTips.slice(0, 9)]);
         } catch (error) {
             console.error('Error submitting safety tip:', error);
+            throw error; 
         }
     };
 
@@ -63,10 +66,6 @@ const SafetyTipPage = () => {
             <h2>Meet-up Safety:</h2>
             <p>If you are meeting someone from the platform or any social media app, always meet in 
             public places and let someone you trust know where you will be.</p>
-
-            <h2>Check Reviews and Ratings:</h2>
-            <p>Before visiting a place you found on the platform, check reviews and ratings. Make sure 
-            multiple people vouch for its LGBTQIA+ friendliness.</p>
 
             <h2>Local Laws and Customs:</h2>
             <p>Always research the local laws and customs related to LGBTQIA+ rights when you are 
@@ -112,22 +111,19 @@ const SafetyTipPage = () => {
             <SafetyTips onTipSubmit={handleTipSubmit} />
 
             {/* Displaying Submitted Safety Tips */}
-            <section>
-                <h2>User-Submitted Safety Tips</h2>
-                <ul>
-                    {safetyTips.map((tip, index) => (
-                        <li key={index}>{tip.tip}</li>
-                    ))}
-                </ul>
-            </section>
+                        <section>
+                            <h2>User-Submitted Safety Tips</h2>
+                            <ul>
+                                {safetyTips.map((tip, index) => (
+                                    <li key={index}>{tip.tip}</li>
+                                ))}
+                            </ul>
+                            <Link to="/see-all-safety-tips">See All</Link>
+                        </section>
 
             <h2>Respect & Community:</h2>
             <p>Spread Love, Not Hate: Our platform thrives on positivity. Engage respectfully and 
             kindly. Remember, bullying or disrespect will not be tolerated.</p>
-
-            <h2>Report & Support:</h2>
-            <p>Help us maintain a safe space. Report any inappropriate behavior, and we will take necessary 
-            action.</p>
 
             <h2>Conclusion:</h2>
             <p>Safety is a collective responsibility. While we strive to ensure Follow The Rainbow 

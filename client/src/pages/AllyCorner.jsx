@@ -5,15 +5,15 @@ const AllyCorner = () => {
     return (
         <div className="ally-corner">
             <h1>Welcome Allies!</h1>
-            
-            <section className="ally-qna-section">
-                <h2>Questions & Answers</h2>
-                <AllyQnA />
-            </section>
 
             <section className="ally-posts-section">
                 <h2>Positive Posts</h2>
                 <AllyPosts />
+            </section>
+
+            <section className="ally-qna-section">
+                <h2>Questions & Answers</h2>
+                <AllyQnA />
             </section>
 
             <section className="thank-you-section">

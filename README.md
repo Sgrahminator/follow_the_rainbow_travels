@@ -115,7 +115,7 @@ Categories Page ("/categories"): A page to view LGBTQIA+ friendly 'Accommodation
  - When viewing a specific category users can use filters to navigate through submissions (the filters will grow as the app grows)
 	- Filter: Users can filter by highest review ratings (will provide all submissions for that category, just start with the highest rated submission to the lowest rated submission... rated by their reviews), recent additions (will provide all submission for that category, just filter them from the newest to oldest), and oldest submissions (will provide all submission for that category, just filter them from the oldest to newest).
 
-Safety Tips ("/safetytips"): A page where users can learn and share safety tips. 
+Safety Tips ("/safety-tips"): A page where users can learn and share safety tips. 
  - A page of safety tips. 
  - A few set by us/'Follow the Rainbow Travels' and the rest given as input/tips from the users. 
  - The user submitted safety tips can have some highlighted and a link to "See All". 
@@ -169,8 +169,6 @@ Online Interaction/Input From Users:
 Respect & Community:
 
 Spread Love, Not Hate: Our platform thrives on positivity. Engage respectfully and kindly. Remember, bullying or disrespect will not be tolerated.
-
-Report & Support: Help us maintain a safe space. Report any inappropriate behavior, and we will take necessary action.
 
 Conclusion: Safety is a collective responsibility. While we strive to ensure Follow The Rainbow Travels remains a safe haven, your awareness and prudence play an integral role. Let's together create a safe and welcoming space for everyone!
 

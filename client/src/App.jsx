@@ -24,7 +24,7 @@ function App() {
         <Route path="/about" element={<PrivateRoute component={AboutPage} />} />
         <Route path="/category" element={<PrivateRoute component={CategoryPage} />} />
         <Route path="/safety-tips" element={<PrivateRoute component={SafetyTipPage} />} />
-        <Route path="/see-all-safety-tips" element={<PrivateRoute component={SeeAllSafetyTips} />} /> {/* New route for SeeAllSafetyTips */}
+        <Route path="/see-all-safety-tips" element={<PrivateRoute component={SeeAllSafetyTips} />} /> 
         <Route path="/allycorner" element={<PrivateRoute component={AllyCorner} />} />
         <Route path="/profile" element={<PrivateRoute component={ProfilePage} />} />
         <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const SeeAllSafetyTips = () => {
     const [safetyTips, setSafetyTips] = useState([]);
@@ -32,6 +33,7 @@ const SeeAllSafetyTips = () => {
                     <li key={index}>{tip.tip}</li>
                 ))}
             </ul>
+            <Link to="/safety-tips">Back to Safety Tips</Link>
         </div>
     );
 };

@@ -3,7 +3,14 @@ const AllyPost = require('../models/allypost.model');
 const AllyPostController = {
     createAllyPost: async (req, res) => {
         try {
-            const { content, images } = req.body;
+            const { content = '' } = req.body; // Default content to an empty string if not provided
+            let images = [];
+            if (req.file) {
+                images.push(req.file.path);
+            }
+            if (!content && images.length === 0) {
+                return res.status(400).json({ error: 'A post must have either text content or an image.' });
+            }
             const allyPost = new AllyPost({
                 user: req.user._id,
                 content,
@@ -18,7 +25,11 @@ const AllyPostController = {
 
     getAllAllyPosts: async (req, res) => {
         try {
-            const allyPosts = await AllyPost.find().populate('user', 'username'); // Changed from 'email' to 'username'
+            let query = AllyPost.find().populate('user', 'username').sort({ createdAt: -1 });
+            if (req.query.limit) {
+                query = query.limit(parseInt(req.query.limit));
+            }
+            const allyPosts = await query;
             res.status(200).json(allyPosts);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -27,7 +38,7 @@ const AllyPostController = {
 
     getAllyPostById: async (req, res) => {
         try {
-            const allyPost = await AllyPost.findById(req.params.id).populate('user', 'username'); // Changed from 'email' to 'username'
+            const allyPost = await AllyPost.findById(req.params.id).populate('user', 'username');
             if (!allyPost) {
                 return res.status(404).json({ message: 'AllyPost not found' });
             }
@@ -39,7 +50,7 @@ const AllyPostController = {
 
     getAllyPostsByUser: async (req, res) => {
         try {
-            const allyPosts = await AllyPost.find({ user: req.params.userId }).populate('user', 'username'); // Populate with 'username'
+            const allyPosts = await AllyPost.find({ user: req.params.userId }).populate('user', 'username');
             res.status(200).json(allyPosts);
         } catch (error) {
             res.status(500).json({ error: error.message });
@@ -48,14 +59,18 @@ const AllyPostController = {
 
     updateAllyPost: async (req, res) => {
         try {
-            const { content, images } = req.body; // Limiting update to content and images only
+            const { content } = req.body;
+            let images = [];
             const allyPost = await AllyPost.findOne({ _id: req.params.id, user: req.user._id });
             if (!allyPost) {
                 return res.status(404).json({ message: 'AllyPost not found or not authorized' });
             }
 
             if (content) allyPost.content = content;
-            if (images) allyPost.images = images;
+            if (req.file) {
+                images.push(req.file.path);
+                allyPost.images = images;
+            }
 
             await allyPost.save();
             res.status(200).json({ message: 'AllyPost updated successfully', allyPost });
@@ -78,3 +93,4 @@ const AllyPostController = {
 };
 
 module.exports = AllyPostController;
+

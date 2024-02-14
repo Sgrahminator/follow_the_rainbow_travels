@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const allypostSchema = new mongoose.Schema({
     user: {
@@ -9,18 +8,11 @@ const allypostSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        required: [true, 'Content cannot be empty'],
-        minlength: [10, 'Content is too short'],
         maxlength: [1000, 'Content is too long'],
+        default: '' 
     },
     images: [{
-        type: String,
-        validate: {
-            validator: function(value) {
-                return validator.isURL(value, { require_protocol: true });
-            },
-            message: props => `${props.value} is not a valid URL`
-        }
+        type: String, 
     }],
 }, {
     timestamps: true,
@@ -30,4 +22,5 @@ const allypostSchema = new mongoose.Schema({
 allypostSchema.index({ user: 1 });
 
 module.exports = mongoose.model('AllyPost', allypostSchema);
+
 

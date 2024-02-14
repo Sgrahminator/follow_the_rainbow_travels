@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const AllyPosts = () => {
     const [allyPosts, setAllyPosts] = useState([]);
     const [newPostContent, setNewPostContent] = useState('');
-    const [newPostImage, setNewPostImage] = useState('');
+    const [newPostImage, setNewPostImage] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const fileInputRef = useRef(null); // Added useRef here for the file input
 
     const fetchAllyPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/allyposts', { withCredentials: true });
+            const response = await axios.get('http://localhost:8000/allypost/allyposts?limit=10', { withCredentials: true });
             setAllyPosts(response.data);
         } catch (error) {
             console.error('Error fetching ally posts:', error);
@@ -24,13 +25,25 @@ const AllyPosts = () => {
 
     const handleSubmitPost = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('content', newPostContent || '');
+        if (newPostImage) {
+            formData.append('image', newPostImage);
+        }
+
         try {
-            await axios.post('http://localhost:8000/allypost', 
-                { content: newPostContent, images: [newPostImage] }, 
-                { withCredentials: true });
+            const response = await axios.post('http://localhost:8000/allypost/allypost', formData, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            setAllyPosts([response.data.allyPost, ...allyPosts]);
             setNewPostContent('');
-            setNewPostImage('');
-            fetchAllyPosts(); 
+            setNewPostImage(null);
+            if (fileInputRef.current) {
+                fileInputRef.current.value = ''; 
+            }
         } catch (error) {
             console.error('Error submitting post:', error);
         }
@@ -40,7 +53,6 @@ const AllyPosts = () => {
 
     return (
         <div className="ally-posts-container">
-            {/* Form for submitting a new ally post */}
             <form onSubmit={handleSubmitPost}>
                 <input 
                     type="text" 
@@ -49,27 +61,29 @@ const AllyPosts = () => {
                     onChange={(e) => setNewPostContent(e.target.value)} 
                 />
                 <input 
-                    type="text" 
-                    placeholder="Image URL" 
-                    value={newPostImage} 
-                    onChange={(e) => setNewPostImage(e.target.value)} 
+                    type="file" 
+                    onChange={(e) => setNewPostImage(e.target.files[0])} 
+                    ref={fileInputRef} 
                 />
                 <button type="submit">Submit Post</button>
             </form>
 
-            {allyPosts.map((post) => (
-                <div key={post._id} className="ally-post">
+            {allyPosts.map((post, index) => (
+                <div key={index} className="ally-post">
                     <h3>{post.user.username}</h3>
                     <p>{post.content}</p>
-                    {post.images && post.images.map((image, index) => (
-                        <img key={index} src={image} alt={`Post ${post._id} Image ${index}`} />
+                    {post.images && post.images.map((image, imgIndex) => (
+                        <img key={imgIndex} src={`http://localhost:8000/${image.split('/').pop()}`} alt={`Post Image ${imgIndex}`} style={{ maxWidth: "300px", height: "auto" }} />
                     ))}
-                    <Link to={`/allypost/${post._id}`}>View Post</Link>
                 </div>
             ))}
-            <Link to="/allypost/allyposts">See All</Link>
+            <Link to="/see-all-ally-posts">See All</Link>
         </div>
     );
 };
 
 export default AllyPosts;
+
+
+
+

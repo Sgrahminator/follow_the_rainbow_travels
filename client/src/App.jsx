@@ -12,7 +12,8 @@ import SafetyTipPage from "./pages/SafetyTipPage";
 import AllyCorner from "./pages/AllyCorner";
 import ProfilePage from "./pages/ProfilePage";
 import RegLog from "./pages/RegLog";
-import SeeAllSafetyTips from "./pages/SeeAllSafetyTips"; 
+import SeeAllSafetyTips from "./pages/SeeAllSafetyTips";
+import SeeAllAllyPosts from "./pages/SeeAllAllyPosts";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/safety-tips" element={<PrivateRoute component={SafetyTipPage} />} />
         <Route path="/see-all-safety-tips" element={<PrivateRoute component={SeeAllSafetyTips} />} /> 
         <Route path="/allycorner" element={<PrivateRoute component={AllyCorner} />} />
+        <Route path="/see-all-ally-posts" element={<PrivateRoute component={SeeAllAllyPosts} />} />
         <Route path="/profile" element={<PrivateRoute component={ProfilePage} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

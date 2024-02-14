@@ -36,8 +36,9 @@ app.use(passport.session());
 require('./config/mongoose.config');
 
 // Serve static files 
-app.use('/uploads', express.static('server/uploads'));
-app.use('/images', express.static('server/public/images'));
+app.use('/uploads', express.static('uploads'));
+app.use('/images', express.static('public/images'));
+
 
 // Route handling
 const authRoutes = require('./routes/auth.routes');

@@ -5,12 +5,16 @@ import { Link } from 'react-router-dom';
 const AllyQnA = () => {
     const [questions, setQuestions] = useState([]);
     const [newQuestion, setNewQuestion] = useState('');
-    const [newAnswers, setNewAnswers] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [newAnswers, setNewAnswers] = useState({});
+
+    useEffect(() => {
+        fetchQuestions();
+    }, []);
 
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/allyquestionanswer', { withCredentials: true });
+            const response = await axios.get('http://localhost:8000/allyquestionanswer/allyquestionanswer', { withCredentials: true });
             setQuestions(response.data);
         } catch (error) {
             console.error('Error fetching questions:', error);
@@ -19,14 +23,10 @@ const AllyQnA = () => {
         }
     };
 
-    useEffect(() => {
-        fetchQuestions();
-    }, []);
-
     const handleNewQuestionSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8000/allyquestionanswer', { question: newQuestion }, { withCredentials: true });
+            await axios.post('http://localhost:8000/allyquestionanswer/allyquestionanswer', { question: newQuestion }, { withCredentials: true });
             setNewQuestion('');
             fetchQuestions();
         } catch (error) {
@@ -34,13 +34,10 @@ const AllyQnA = () => {
         }
     };
 
-    const handleNewAnswerSubmit = async (questionId) => {
-        const answerText = newAnswers[questionId];
+    const handleNewAnswerSubmit = async (questionId, answerText) => {
         if (!answerText) return;
-
         try {
-            await axios.post(`http://localhost:8000/allyquestionanswer/${questionId}/answer`, { answer: answerText }, { withCredentials: true });
-            setNewAnswers({ ...newAnswers, [questionId]: '' });
+            await axios.post(`http://localhost:8000/allyquestionanswer/allyquestionanswer/${questionId}/answer`, { answer: answerText }, { withCredentials: true });
             fetchQuestions();
         } catch (error) {
             console.error('Error submitting new answer:', error);
@@ -48,27 +45,28 @@ const AllyQnA = () => {
     };
 
     const editAnswer = async (questionId, answerId) => {
-        const newAnswerText = newAnswers[answerId];
+        const answer = questions.find(q => q._id === questionId).answers.find(a => a._id === answerId);
+        const newAnswerText = prompt("Edit your answer:", answer ? answer.answer : "");
         if (!newAnswerText) return;
 
         try {
-            await axios.put(`http://localhost:8000/allyquestionanswer/${questionId}/answer/${answerId}`, 
-                            { answer: newAnswerText }, 
-                            { withCredentials: true });
-            setNewAnswers({ ...newAnswers, [answerId]: '' });
+            await axios.put(`http://localhost:8000/allyquestionanswer/allyquestionanswer/${questionId}/answer/${answerId}`, { answer: newAnswerText }, { withCredentials: true });
             fetchQuestions();
         } catch (error) {
             console.error('Error editing answer:', error);
         }
     };
-    
-    const deleteAnswer = async (questionId, answerId) => {
+
+    const editQuestion = async (questionId) => {
+        const question = questions.find(q => q._id === questionId);
+        const newQuestionText = prompt("Edit your question:", question ? question.question : "");
+        if (!newQuestionText) return;
+
         try {
-            await axios.delete(`http://localhost:8000/allyquestionanswer/${questionId}/answer/${answerId}`, 
-                                { withCredentials: true });
+            await axios.put(`http://localhost:8000/allyquestionanswer/allyquestionanswer/${questionId}`, { question: newQuestionText }, { withCredentials: true });
             fetchQuestions();
         } catch (error) {
-            console.error('Error deleting answer:', error);
+            console.error('Error editing question:', error);
         }
     };
 
@@ -85,38 +83,45 @@ const AllyQnA = () => {
                 />
                 <button type="submit">Ask Question</button>
             </form>
-
+    
             {questions.map((question) => (
                 <div key={question._id} className="ally-question">
                     <h3>{question.question}</h3>
                     <p>Asked by: {question.user.username}</p>
+                    <button onClick={() => editQuestion(question._id)}>Edit Question</button>
                     {question.answers.map((answer) => (
                         <div key={answer._id} className="ally-answer">
-                        <p>{answer.answer}</p>
-                        <p>- {answer.user.username}</p>
+                            <p>{answer.answer}</p>
+                            <p>- {answer.user.username}</p>
+                            <button onClick={() => editAnswer(question._id, answer._id)}>Edit</button>
+                        </div>
+                    ))}
+                    <div className="new-answer-section">
                         <input 
                             type="text" 
-                            value={newAnswers[answer._id] || ''} 
-                            onChange={(e) => setNewAnswers({ ...newAnswers, [answer._id]: e.target.value })} 
+                            placeholder="Your Answer" 
+                            value={newAnswers[question._id] || ''} 
+                            onChange={(e) => {
+                                const updatedAnswers = {...newAnswers};
+                                updatedAnswers[question._id] = e.target.value;
+                                setNewAnswers(updatedAnswers);
+                            }} 
                         />
-                        <button onClick={() => editAnswer(question._id, answer._id)}>Edit</button>
-                        <button onClick={() => deleteAnswer(question._id, answer._id)}>Delete</button>
+                        <button onClick={() => {
+                            handleNewAnswerSubmit(question._id, newAnswers[question._id]);
+                            const updatedAnswers = {...newAnswers};
+                            updatedAnswers[question._id] = '';
+                            setNewAnswers(updatedAnswers);
+                        }}>Submit Answer</button>
                     </div>
-                ))}
-                <div className="new-answer-section">
-                    <input 
-                        type="text" 
-                        placeholder="Your Answer" 
-                        value={newAnswers[question._id] || ''} 
-                        onChange={(e) => setNewAnswers({ ...newAnswers, [question._id]: e.target.value })} 
-                    />
-                    <button onClick={() => handleNewAnswerSubmit(question._id)}>Submit Answer</button>
                 </div>
-            </div>
-        ))}
-        <Link to="/allyquestionanswer/all">See All</Link>
-    </div>
-);
+            ))}
+            <Link to="/see-all-question-answers">See All</Link>
+        </div>
+    );
 };
 
 export default AllyQnA;
+
+
+

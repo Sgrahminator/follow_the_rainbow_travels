@@ -172,14 +172,21 @@ Spread Love, Not Hate: Our platform thrives on positivity. Engage respectfully a
 
 Conclusion: Safety is a collective responsibility. While we strive to ensure Follow The Rainbow Travels remains a safe haven, your awareness and prudence play an integral role. Let's together create a safe and welcoming space for everyone!
 
-Ally Corner ("/allycorner"): A dedicated section where allies can show support with positive posts, ask questions and get answers, and learn about the LGBTQIA+ community.
- - A section for Q&A where Ally's or  any user can ask questions and other users can respond. 
- - Every question will have the ability to have an answer or multiple answers attached to it.
- - It will need a "See All" that directs to a page of all Questions and their answers. 
- - A section for support posts that can be text or image or a combo of both, a positive posts section. 
- - It will need a "See All" that links to a page of all positive posts. 
+Ally Corner (AllyCorner.jsx - "/allycorner"): A dedicated section where users can show support with positive posts, a section where users can ask questions and get or give answers, and learn about the LGBTQIA+ community.
+ - AllyPosts.jsx - A section for support posts that can be text or image or a combo of both, a positive posts section. 
+ 	- It will need a "See All" that links to a page of all positive posts. (SeeAllAllyPosts.jsx)
+ - AllyQnA.jsx - A section for Q&A where Ally's or any user can ask questions and other users can respond. 
+ 	- Every question will have the ability to have an answer or multiple answers attached to it.
+ 	- It will need a "See All" that directs to a page of all Questions and their answers. (SeeAllAllyQnA.jsx)
  - A section thanking our allies for their support and love.
  - Each section is it's own separate thing. Positive posts and the Q&A sections are not related.
+
+ - Components within AllyCorner.jsx:
+    Positive Posts section (AllyPosts.jsx):
+    Text, images, or a combo of both can be posted here from users as a space for positivity, spreading love, and uplifting those around us. In the Positive Post section the page will display the most recent 10 posts below the Positive Posts form with a 'See All' link to the SeeAllAllyPosts.jsx page that displays all Positive Posts defaulting in descending order. Each post is attached to the user who posted it, using the username they created not their real name. A post has to be either text, an image/meme, or a combo of both. When a Positive Post is submitted the page should refresh displaying the new post under the from.
+
+  - Q&A section (AllyQnA.jsx):
+    Anyone can ask and or answer questions. Questions are created by users then all answers are attached to their respective questions. All questions and answers are also attached to the user who created it, using the username they created not their real name. A question can have multiple answers, no answers, or just 1 answer. If a question or an answer is edited or updated it does not affect the other answers or the question, it only affects the specific answer or question being updated or edited. If an answer is deleted it is the only thing deleted, nothing else is affected, where as if a question is deleted all associated answers are also deleted. The Question form is what will display on the page with the submit button, once a question is submitted and being displayed below the form or on the See All page there should be a link to the answer form that will pop up below the question. Once an answer is submitted the page will refresh and show both the question and all it's respective answers with the option for more users to leave answers. The Q&A section the page will display the most recent 10 questions with their respective answers below the question form with a 'See All' link to the SeeAllAllyQnAs.jsx page that displays all Questions and their respective answers defaulting in descending order.
 
 Profile Page ("/profile"): A place that will display users name (first and last), username they created, submissions they've done, reviews they've done, an optional brief description of themselves, a spot for an optional photo for their profile. 
  - There will be 2 different views for the profile page depending on if the profile page being viewed is the user in session's profile or another user's profile. 

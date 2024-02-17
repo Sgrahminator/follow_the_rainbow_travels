@@ -15,6 +15,8 @@ import RegLog from "./pages/RegLog";
 import SeeAllSafetyTips from "./pages/SeeAllSafetyTips";
 import SeeAllAllyPosts from "./pages/SeeAllAllyPosts";
 import SeeAllAllyQnAs from "./pages/SeeAllAllyQnAs";
+import SeeAllSubmissions from "./pages/SeeAllSubmissions";
+import SeeAllReviews from "./pages/SeeAllReviews";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/home" element={<PrivateRoute component={HomePage} />} />
         <Route path="/about" element={<PrivateRoute component={AboutPage} />} />
         <Route path="/category" element={<PrivateRoute component={CategoryPage} />} />
+        <Route path="/see-all-submissions" element={<PrivateRoute component={SeeAllSubmissions} />} />
+        <Route path="/see-all-reviews" element={<PrivateRoute component={SeeAllReviews} />} />
         <Route path="/safety-tips" element={<PrivateRoute component={SafetyTipPage} />} />
         <Route path="/see-all-safety-tips" element={<PrivateRoute component={SeeAllSafetyTips} />} /> 
         <Route path="/allycorner" element={<PrivateRoute component={AllyCorner} />} />

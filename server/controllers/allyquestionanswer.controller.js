@@ -25,7 +25,11 @@ const AllyQuestionAnswerController = {
 
     getAllAllyQuestions: async (req, res) => {
         try {
-            const allyQuestions = await AllyQuestionAnswer.find().populate('user', 'username').populate('answers.user', 'username');
+            let query = AllyQuestionAnswer.find().populate('user', 'username').populate('answers.user', 'username');
+            if (req.query.limit && parseInt(req.query.limit) > 0) {
+                query = query.limit(parseInt(req.query.limit));
+            }
+            const allyQuestions = await query;
             res.status(200).json(allyQuestions);
         } catch (error) {
             res.status(500).json({ error: error.message });

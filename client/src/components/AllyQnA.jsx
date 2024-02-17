@@ -14,7 +14,7 @@ const AllyQnA = () => {
 
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/allyquestionanswer/allyquestionanswer', { withCredentials: true });
+            const response = await axios.get('http://localhost:8000/allyquestionanswer/allyquestionanswer?limit=10', { withCredentials: true });
             setQuestions(response.data);
         } catch (error) {
             console.error('Error fetching questions:', error);

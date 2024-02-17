@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import RegLog from "./pages/RegLog";
 import SeeAllSafetyTips from "./pages/SeeAllSafetyTips";
 import SeeAllAllyPosts from "./pages/SeeAllAllyPosts";
+import SeeAllAllyQnAs from "./pages/SeeAllAllyQnAs";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/see-all-safety-tips" element={<PrivateRoute component={SeeAllSafetyTips} />} /> 
         <Route path="/allycorner" element={<PrivateRoute component={AllyCorner} />} />
         <Route path="/see-all-ally-posts" element={<PrivateRoute component={SeeAllAllyPosts} />} />
+        <Route path="/see-all-question-answers"element={<PrivateRoute component={SeeAllAllyQnAs} />} />
         <Route path="/profile" element={<PrivateRoute component={ProfilePage} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

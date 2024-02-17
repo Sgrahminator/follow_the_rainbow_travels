@@ -1,8 +1,10 @@
+require('dotenv').config({ path: './server/.env' });
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const app = express();
+
 
 // CORS configuration for security and correct credentials handling
 app.use(cors({
@@ -17,13 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session configuration
 app.use(session({
-    secret: 'your_secret_key', 
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24, // expires in 24 hours
         httpOnly: true,
-        secure:false, 
+        secure: false, 
         sameSite: 'lax'
     }
 }));
@@ -38,7 +40,6 @@ require('./config/mongoose.config');
 // Serve static files 
 app.use('/uploads', express.static('uploads'));
 app.use('/images', express.static('public/images'));
-
 
 // Route handling
 const authRoutes = require('./routes/auth.routes');
@@ -61,4 +62,5 @@ app.use('/review', reviewRoutes);
 app.use('/safetytips', safetyTipRoutes);
 app.use('/submission', submissionRoutes);
 
-app.listen(8000, () => {console.log("Listening at Port 8000");});
+app.listen(8000, () => { console.log("Listening at Port 8000"); });
+

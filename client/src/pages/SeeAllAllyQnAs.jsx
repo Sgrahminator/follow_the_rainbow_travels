@@ -10,7 +10,11 @@ const SeeAllAllyQnAs = () => {
         const fetchAllyQnAs = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/allyquestionanswer/allyquestionanswer', { withCredentials: true });
-                setAllyQnAs(response.data);
+                const sortedAllyQnAs = response.data.map(qna => ({
+                    ...qna,
+                    answers: qna.answers.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+                })).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                setAllyQnAs(sortedAllyQnAs);
             } catch (error) {
                 console.error('Error fetching Ally QnAs:', error);
             } finally {

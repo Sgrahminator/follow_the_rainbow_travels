@@ -25,8 +25,8 @@ const AllyQuestionAnswerController = {
 
     getAllAllyQuestions: async (req, res) => {
         try {
-            let query = AllyQuestionAnswer.find().populate('user', 'username').populate('answers.user', 'username');
-            if (req.query.limit && parseInt(req.query.limit) > 0) {
+            let query = AllyQuestionAnswer.find().populate('user', 'username').populate('answers.user', 'username').sort({ createdAt: -1 });
+            if (req.query.limit) {
                 query = query.limit(parseInt(req.query.limit));
             }
             const allyQuestions = await query;

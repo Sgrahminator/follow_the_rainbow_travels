@@ -15,7 +15,11 @@ const AllyQnA = () => {
     const fetchQuestions = async () => {
         try {
             const response = await axios.get('http://localhost:8000/allyquestionanswer/allyquestionanswer?limit=10', { withCredentials: true });
-            setQuestions(response.data);
+            const sortedQuestions = response.data.map(question => ({
+                ...question,
+                answers: question.answers.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+            })).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            setQuestions(sortedQuestions);
         } catch (error) {
             console.error('Error fetching questions:', error);
         } finally {
@@ -122,6 +126,3 @@ const AllyQnA = () => {
 };
 
 export default AllyQnA;
-
-
-

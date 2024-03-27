@@ -1,8 +1,8 @@
 const AboutPage = () => {
     return (
         <div className="about-page">
-            <h1>About Follow The Rainbow Travels</h1>
-            <p>Welcome to Follow The Rainbow Travels, a haven for the LGBTQIA+ community and our 
+            <h1>About Queer Quests Hub</h1>
+            <p>Welcome to Queer Quests Hub, a haven for the LGBTQIA+ community and our 
             cherished allies. Before diving into the wealth of resources and shared experiences here, 
             let us take you on a journey of how this platform came to be.</p>
 
@@ -15,7 +15,7 @@ const AboutPage = () => {
             visit a corner of the world where they feel seen, valued, and cherished.</p>
 
             <h2>What We Do</h2>
-            <p>Follow The Rainbow Travels is a global recommendation platform, built by you and for you. 
+            <p>Queer Quests Hub is a global recommendation platform, built by you and for you. 
             From the cozy cafe on a European street to the lively bars in South America, from the 
             tranquil beaches of Asia to the bustling shopping avenues in North America, this is where 
             you can discover and share spaces that are LGBTQIA+ friendly.</p>
@@ -25,7 +25,7 @@ const AboutPage = () => {
             of trust, acceptance, and pride.</p>
 
             <h2>Our Promise</h2>
-            <p>Respect and safety are at the heart of what we do. At Follow The Rainbow Travels, 
+            <p>Respect and safety are at the heart of what we do. At Queer Quests Hub, 
             bullying has no place. Every member is expected to uphold the values of respect, 
             understanding, and compassion. Any deviation from these principles is not tolerated. 
             Together, we aim to make this platform a beacon of positivity, love, and unity for all that 
@@ -33,11 +33,11 @@ const AboutPage = () => {
 
             <h2>Join Us</h2>
             <p>Whether you are looking for a new place to explore, have a tip to share, or simply want 
-            to connect with like-minded souls, Follow The Rainbow Travels welcomes you with open arms. 
+            to connect with like-minded souls, Queer Quests Hub welcomes you with open arms. 
             For our allies, there is a dedicated corner where you can learn, share, and support, helping 
             us become truly united through love.</p>
             <p>Let us chart a world map that gleams with colors of love, acceptance, and pride. Welcome 
-            to Follow The Rainbow Travels!</p>
+            to Queer Quests Hub!</p>
         </div>
     );
 }

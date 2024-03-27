@@ -54,7 +54,7 @@ const SafetyTipPage = () => {
     return (
         <div className="safety-tip-page">
             <h1>Safety First, Always</h1>
-            <p>At Follow The Rainbow Travels, we prioritize the well-being of our members. Whether 
+            <p>At Queer Quests Hub, we prioritize the well-being of our members. Whether 
             you are exploring a new destination or engaging with others online, we want you to do so 
             safely. Below are some safety guidelines we recommend:</p>
             
@@ -126,8 +126,7 @@ const SafetyTipPage = () => {
             kindly. Remember, bullying or disrespect will not be tolerated.</p>
 
             <h2>Conclusion:</h2>
-            <p>Safety is a collective responsibility. While we strive to ensure Follow The Rainbow 
-            Travels remains a safe haven, your awareness and prudence play an integral role. Let us 
+            <p>Safety is a collective responsibility. While we strive to ensure Queer Quests Hub remains a safe haven, your awareness and prudence play an integral role. Let us 
             together create a safe and welcoming space for everyone!</p>
         </div>
     );

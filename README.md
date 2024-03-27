@@ -1,10 +1,10 @@
 Using JavaScript - Vite - MERN: Mongoose, Express, React, Node 
 
-Project Name: "follow_the_rainbow_travels"
+Project Name: "Queer Quests Hub"
 
 Concept: A worldwide, user-driven recommendation website where LGBTQIA+ individuals and allies can share and discover LGBTQIA+ friendly and accepting places and/or events across various categories.
 
-Login/Register Page ("/"): User-centric gateway for both returning and new members of the "Follow the Rainbow Travels" community. 
+Login/Register Page ("/"): User-centric gateway for both returning and new members of the community. 
  - Features straightforward registration and login forms with clearly outlined benefits for joining the community. 
  - Emphasizes the platform's commitment to safety, privacy, and respectful interactions.  
  - Registration will have Name (First and Last), Username (a unique user created name for themselves), Pronouns (a drop down of options - 'He/Him', 'She/Her', 'They/Them', 'He/They', 'She/They', 'Other'), Membership Type (radio button choice of LGBTQIA+ or Ally), Email, Password (hashed), and Confirm Password.
@@ -54,7 +54,7 @@ Once logged in properly the user clicks the Login button, receives a successfull
 *Below the login/registration section will be the following sections*
 
 Membership Exclusivity for Your Safety:
-We are deeply committed to the safety and well-being of our community. Access to specific content and features on Follow The Rainbow Travels is reserved exclusively for our registered members. This level of exclusivity is necessary to ensure a secure, private, and respectful environment. When you join us, you are not just gaining access to reviews, recommendations, and safety tips; you are joining a protected network dedicated to promoting LGBTQIA+ friendly spaces across the globe. We take your safety seriously and work tirelessly to vet all contributions to our platform. So why not join us and become part of a global community that thrives on respect, safety, and inclusivity?
+We are deeply committed to the safety and well-being of our community. Access to specific content and features on "The name of the app" is reserved exclusively for our registered members. This level of exclusivity is necessary to ensure a secure, private, and respectful environment. When you join us, you are not just gaining access to reviews, recommendations, and safety tips; you are joining a protected network dedicated to promoting LGBTQIA+ friendly spaces across the globe. We take your safety seriously and work tirelessly to vet all contributions to our platform. So why not join us and become part of a global community that thrives on respect, safety, and inclusivity?
 
 
 Why Join?
@@ -97,7 +97,7 @@ Home Page ("/home"): This is the main page users/members see once they login
     - Submissions are created by 1 user and reviews are created by other users in regards to the original users submission.
 
 About Page ("/about"): A detailed explanation of how the page came to be with the rules emphasized about being respectful and no bullying. 
- - An "About Follow the Rainbow Travels" section
+ - An "About Queer Quests Hub" section
  - An "Our Origin" section
  - A "What We Do" Section
  - An "Our Promise" section
@@ -117,7 +117,7 @@ Categories Page ("/categories"): A page to view LGBTQIA+ friendly 'Accommodation
 
 Safety Tips ("/safety-tips"): A page where users can learn and share safety tips. 
  - A page of safety tips. 
- - A few set by us/'Follow the Rainbow Travels' and the rest given as input/tips from the users. 
+ - A few set by us and the rest given as input/tips from the users. 
  - The user submitted safety tips can have some highlighted and a link to "See All". 
  - A place for users to submit their own safety tips. 
 
@@ -125,7 +125,7 @@ Safety Tips ("/safety-tips"): A page where users can learn and share safety tips
 
 Safety Tips Header: "Safety First, Always"
 
-Introduction: At Follow The Rainbow Travels, we prioritize the well-being of our members. Whether you are exploring a new destination or engaging with others online, we want you to do so safely. Below are some safety guidelines we recommend:
+Introduction: At "Queer Quests Hub", we prioritize the well-being of our members. Whether you are exploring a new destination or engaging with others online, we want you to do so safely. Below are some safety guidelines we recommend:
 
 Online Interactions:
 Always protect your personal information. Avoid sharing addresses, phone numbers, or financial details unless you are sure about the site security and the person you are communicating with.
@@ -170,7 +170,7 @@ Respect & Community:
 
 Spread Love, Not Hate: Our platform thrives on positivity. Engage respectfully and kindly. Remember, bullying or disrespect will not be tolerated.
 
-Conclusion: Safety is a collective responsibility. While we strive to ensure Follow The Rainbow Travels remains a safe haven, your awareness and prudence play an integral role. Let's together create a safe and welcoming space for everyone!
+Conclusion: Safety is a collective responsibility. While we strive to ensure "Queer Quests Hub" remains a safe haven, your awareness and prudence play an integral role. Let's together create a safe and welcoming space for everyone!
 
 Ally Corner (AllyCorner.jsx - "/allycorner"): A dedicated section where users can show support with positive posts, a section where users can ask questions and get or give answers, and learn about the LGBTQIA+ community.
  - AllyPosts.jsx - A section for support posts that can be text or image or a combo of both, a positive posts section. 
@@ -191,4 +191,4 @@ Ally Corner (AllyCorner.jsx - "/allycorner"): A dedicated section where users ca
 Profile Page ("/profile"): A place that will display users name (first and last), username they created, submissions they've done, reviews they've done, an optional brief description of themselves, a spot for an optional photo for their profile. 
  - There will be 2 different views for the profile page depending on if the profile page being viewed is the user in session's profile or another user's profile. 
        - If the User in session is viewing their own profile it will show everything discussed above (the users name (first and last), username they created, submissions they've done, reviews they've done, the optional brief description of themselves, and the optional photo) and should have options to edit, remove, or add to each of the following sections: Profile image, Name, Username, Pronouns, and the optional short description written by the user. 
-       - If the User in session is viewing another users profile there should be no editing options and they can view everything discussed above (the users name (first and last)/username/combo, submissions the other user has done, reviews they've done, the optional brief description of the other user (if they did one), and the optional photo). The owner of the profile will have the option to either have their name, username, or both for other users to see. 
+       - If the User in session is viewing another users profile there should be no editing options and they can view everything discussed above (the users name (first and last)/username/combo, submissions the other user has done, reviews they've done, the optional brief description of the other user (if they did one), and the optional photo). The owner of the profile will have the option to either have their name, username, or both for other users to see.

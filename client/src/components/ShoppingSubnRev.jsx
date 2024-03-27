@@ -1,6 +1,6 @@
-function Submissions() {
+function ShoppingSubnRev() {
     // Page content
     return <div>Submissions Content</div>;
 }
 
-export default Submissions;
+export default ShoppingSubnRev;

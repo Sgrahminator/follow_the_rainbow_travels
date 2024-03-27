@@ -56,7 +56,7 @@ const AllyCorner = () => {
                 With heartfelt gratitude and love,
                 <br></br>
                 <br></br>
-                Follow The Rainbow Travels and the LGBTQIA+ Community
+                Queer Quests Hub and the LGBTQIA+ Community
                 </p>
             </section>
         </div>
